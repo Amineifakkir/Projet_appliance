@@ -8,6 +8,7 @@ public class GestionPovApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestionPovApplication.class, args);
+		System.out.println("connnected");
 	}
 
 }
