@@ -15,7 +15,7 @@ import java.util.List;
 public class Appliance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idAppliance;
+    public Long idAppliance;
     public  String Libelle;
     @ManyToOne
     @JoinColumn(name = "idType")

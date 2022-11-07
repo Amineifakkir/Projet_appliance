@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 public class ApplianceDTO {
 
-    public int idAppliance;
+    public Long idAppliance;
     public  String Libelle;
     public TypeDTO idApp;
     public String DBID;
