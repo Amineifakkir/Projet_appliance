@@ -19,13 +19,14 @@ public class POV {
     public int idPov;
 
     //idAPP
+
     @ManyToOne
     @JoinColumn(name = "idAppliance")
-    public Type idAppliance;
+    public Appliance idAppliance;
     //IdClient
     @ManyToOne
     @JoinColumn(name = "idClient")
-    public Type idClient;
+    public Client idClient;
 
     public Date Date_Debut;
     public Date Date_Fin;
