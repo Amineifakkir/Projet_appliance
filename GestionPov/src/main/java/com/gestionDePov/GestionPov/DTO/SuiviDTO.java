@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Data
 @Table
 public class SuiviDTO {
-    public int idSuivi;
+    public Long idSuivi;
     public Boolean OffreCommercial;
     public float   Montant;
     public TypePrestationDTO TypePres;

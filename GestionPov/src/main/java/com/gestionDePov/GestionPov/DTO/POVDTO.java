@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 public class POVDTO {
-    public int idPov;
+    public Long idPov;
     public ApplianceDTO idAppliance;
     public ClientDTO idClient;
     public Date Date_Debut;

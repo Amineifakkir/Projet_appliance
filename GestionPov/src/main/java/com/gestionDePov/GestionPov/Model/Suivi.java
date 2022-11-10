@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Suivi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idSuivi;
+    public Long idSuivi;
     public Boolean OffreCommercial;
     public float   Montant;
 

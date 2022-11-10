@@ -1,17 +1,9 @@
 package com.gestionDePov.GestionPov.Mapping;
 
-import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
 import com.gestionDePov.GestionPov.DTO.TypeDTO;
-import com.gestionDePov.GestionPov.Model.Appliance;
 import com.gestionDePov.GestionPov.Model.Type;
-import com.gestionDePov.GestionPov.Repository.RepositoryType;
-import com.gestionDePov.GestionPov.Service.ServiceType;
 import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

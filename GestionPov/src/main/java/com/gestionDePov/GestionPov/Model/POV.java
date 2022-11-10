@@ -16,7 +16,7 @@ import java.util.List;
 public class POV {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idPov;
+    public Long idPov;
 
     //idAPP
 

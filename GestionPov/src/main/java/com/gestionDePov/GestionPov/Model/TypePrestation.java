@@ -24,4 +24,5 @@ public class TypePrestation {
     @OneToMany(mappedBy = "TypePres" )
     public List<Suivi> suivis;
 
+
 }

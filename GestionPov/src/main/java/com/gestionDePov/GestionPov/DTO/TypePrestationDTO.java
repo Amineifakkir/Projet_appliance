@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class TypePrestationDTO {
-    public int idTypePres;
+    public Long idTypePres;
     public  String Libelle;
 }

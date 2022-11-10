@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 
 public class SeanceDTO {
-    public int idSeance;
+    public Long idSeance;
     public Date DateSceance;
     public String Resumer;
     public String Participant;

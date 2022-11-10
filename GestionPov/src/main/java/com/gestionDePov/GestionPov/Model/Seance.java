@@ -15,7 +15,7 @@ import java.util.Date;
 public class Seance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idSeance;
+    public Long idSeance;
     public Date DateSceance;
     public String Resumer;
     public String Participant;
