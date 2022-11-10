@@ -1,26 +1,24 @@
 package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.Model.Type;
+import com.gestionDePov.GestionPov.Service.serviceImplementation.TypeImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/Type")
-public class TypeContoller {
-private final ServiceType serviceType;
+public class TypeController {
+private final TypeImpl typeimpl;
 
     @Autowired
-    public TypeContoller(ServiceType serviceType) {
-        this.serviceType = serviceType;
+    public TypeController(TypeImpl typeimpl) {
+        this.typeimpl = typeimpl;
     }
-
-    @GetMapping
-    public List<Type> getType() {
-        return serviceType.Type();
+     @GetMapping("/GetType")
+    public Type getType(Type type) {
+        return typeimpl.save(type);
     }
 
 

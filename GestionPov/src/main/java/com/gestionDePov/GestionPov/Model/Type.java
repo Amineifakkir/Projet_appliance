@@ -24,4 +24,5 @@ public class Type {
     public List<Appliance> appliances;
 
 
+
 }

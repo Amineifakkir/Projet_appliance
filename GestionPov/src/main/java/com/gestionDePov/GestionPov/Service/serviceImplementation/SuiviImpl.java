@@ -5,7 +5,9 @@ import com.gestionDePov.GestionPov.Repository.SuiviRepo;
 import com.gestionDePov.GestionPov.Service.SuiviService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SuiviImpl implements SuiviService {
     @Autowired
     SuiviRepo suiviRepo;
