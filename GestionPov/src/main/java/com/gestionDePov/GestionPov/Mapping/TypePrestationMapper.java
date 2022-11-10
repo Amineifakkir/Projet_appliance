@@ -35,7 +35,7 @@ DozerBeanMapper dozerBeanMapper;
     }
 
     //List Entity To List DTO
-    public List<TypePrestationDTO> ListEntityTypeToEntityType(List<TypePrestation> type){
+    public List<TypePrestationDTO> ListEntityTypePrestationToEntityTypePrestation(List<TypePrestation> type){
 
         List<TypePrestationDTO> LstType = new ArrayList<>();
         type.forEach(Entitytype -> LstType.add(TypeToTypeDTO(Entitytype)));

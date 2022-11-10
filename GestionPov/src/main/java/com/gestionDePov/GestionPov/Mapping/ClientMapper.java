@@ -36,7 +36,7 @@ public class ClientMapper {
     }
 //
 //    //List Entity To List DTO
-    public List<ClientDTO> ClientEntityTypeToEntityClient(List<Client> App){
+    public List<ClientDTO> ListEntityClientToEntityClient(List<Client> App){
 
         List<ClientDTO> LstType = new ArrayList<>();
         App.forEach(Entitytype -> LstType.add(ClientToClientDTO(Entitytype)));

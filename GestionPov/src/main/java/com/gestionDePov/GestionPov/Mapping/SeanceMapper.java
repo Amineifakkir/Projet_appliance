@@ -39,7 +39,7 @@ public class SeanceMapper {
     }
     //
     //List Dto To List Entity
-    public List<SeanceDTO> ListContactDTOToEntityContact (List < Seance > seances) {
+    public List<SeanceDTO> ListSeanceDTOToEntitySeance (List < Seance > seances) {
 
         List<SeanceDTO> seanceDTOS = new ArrayList<>();
         seances.forEach(SeanceDTO -> seanceDTOS.add(SeanceToSeanceDTO(SeanceDTO)));
@@ -49,7 +49,7 @@ public class SeanceMapper {
 
 
 //List Entity To List DTO
-    public List<Seance> ContactEntityTypeToEntityContact (List <SeanceDTO> seanceDTOS) {
+    public List<Seance> ListEntitySeanceToEntitySeance (List <SeanceDTO> seanceDTOS) {
 
         List<Seance> seances = new ArrayList<>();
         seanceDTOS.forEach(Seance -> seances.add(SeanceDtoToSeance(Seance)));

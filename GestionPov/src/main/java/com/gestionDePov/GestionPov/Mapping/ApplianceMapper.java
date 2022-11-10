@@ -35,7 +35,7 @@ public class ApplianceMapper {
     }
 
     //List Dto To List Entity
-    public List<Appliance> ListTypeDTOToEntityType (List<ApplianceDTO> App) {
+    public List<Appliance> ListApplianceDTOToEntityAppliance (List<ApplianceDTO> App) {
 
         List<Appliance> LstTypeDto = new ArrayList<>();
         App.forEach(ApplianceDTO -> LstTypeDto.add(ApplianceDTOToAppliance(ApplianceDTO)));
@@ -44,7 +44,7 @@ public class ApplianceMapper {
     }
 
     //List Entity To List DTO
-    public List<ApplianceDTO> ListEntityTypeToEntityType(List<Appliance> App){
+    public List<ApplianceDTO> ListEntityApplianceToEntityAppliance(List<Appliance> App){
 
         List<ApplianceDTO> LstType = new ArrayList<>();
         App.forEach(Entitytype -> LstType.add(ApplianceToApplianceDTO(Entitytype)));
