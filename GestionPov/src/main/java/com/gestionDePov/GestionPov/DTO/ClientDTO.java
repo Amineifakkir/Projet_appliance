@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 public class ClientDTO {
 
-    public int idType;
+    public Long idClt;
     public  String Libelle;
     public  String Secteur;
     public String Activite;

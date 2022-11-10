@@ -16,11 +16,12 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    public int idType;
+    public Long idType;
     public  String Libelle;
 
 
-    @OneToMany(mappedBy = "idApp" )
+    @OneToMany(mappedBy = "idType" )
     public List<Appliance> appliances;
+
 
 }

@@ -19,7 +19,7 @@ public class Appliance {
     public  String Libelle;
     @ManyToOne
     @JoinColumn(name = "idType")
-    public Type idApp;
+    public Type idType; //FK_TYPE
     public String DBID;
     public String Disponibilitte;
     public String References;

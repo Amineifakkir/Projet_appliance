@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Table;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,7 +15,7 @@ public class ApplianceDTO {
 
     public Long idAppliance;
     public  String Libelle;
-    public TypeDTO idApp;
+    public TypeDTO idTypeDTO; //FK_TYPE
     public String DBID;
     public String Disponibilitte;
     public String References;

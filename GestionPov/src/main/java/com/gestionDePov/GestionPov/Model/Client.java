@@ -15,7 +15,7 @@ import java.util.List;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idType;
+    public Long idClt;
     public  String Libelle;
     public  String Secteur;
     public String Activite;

@@ -12,11 +12,13 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class ContactDTO {
-    public int idContact;
+    public Long idContact;
     public String Nom;
     public String Prenom;
     public String Telephone;
     public  String Fonction;
-    public ClientDTO idClient;
+    public ClientDTO idClient;  //FK_KEY
     public  String Email;
+
+
 }

@@ -11,6 +11,6 @@ import javax.persistence.Table;
 @Data
 @Table
 public class TypeDTO {
-    public int idType;
+    public Long idType;
     public  String Libelle;
 }
