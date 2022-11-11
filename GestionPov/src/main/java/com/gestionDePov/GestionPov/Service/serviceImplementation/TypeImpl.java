@@ -17,4 +17,20 @@ public class TypeImpl implements TypeService {
     public Type save(Type type) {
         return typeRepo.save(type);
     }
+
+    @Override
+    public void delete(Long idType) {
+        boolean exists =typeRepo.existsById(idType);
+        if (!exists){
+            throw new IllegalStateException(
+                    "Type with id "+idType+" does not exists");
+
+        }
+        typeRepo.deleteById(idType);
+
+    }
+    @Override
+    public List<Type> findAll(){
+        return typeRepo.findAll();
+    }
 }

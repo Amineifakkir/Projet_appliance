@@ -20,7 +20,7 @@ public class Type {
     public  String Libelle;
 
 
-    @OneToMany(mappedBy = "idType" )
+    @OneToMany(mappedBy = "idType" ,fetch = FetchType.LAZY)
     public List<Appliance> appliances;
 
 

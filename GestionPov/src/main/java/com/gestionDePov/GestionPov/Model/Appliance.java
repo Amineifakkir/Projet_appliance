@@ -18,7 +18,7 @@ public class Appliance {
     public Long idAppliance;
     public  String Libelle;
     @ManyToOne
-    @JoinColumn(name = "idType")
+//    @JoinColumn(name = "idType")
     public Type idType; //FK_TYPE
     public String DBID;
     public String Disponibilitte;

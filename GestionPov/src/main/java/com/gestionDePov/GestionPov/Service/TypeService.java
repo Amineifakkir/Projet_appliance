@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface TypeService {
     Type save(Type type);
+    void delete(Long type);
+
+    List<Type> findAll();
 }
