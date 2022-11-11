@@ -1,5 +1,6 @@
 package com.gestionDePov.GestionPov.Controller;
 
+import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 import com.gestionDePov.GestionPov.Model.TypePrestation;
 import com.gestionDePov.GestionPov.Service.TypePrestationService;
 
@@ -15,7 +16,7 @@ public class TypePrestationController {
     private TypePrestationService typePrestation;
 
     @GetMapping("/GetTypePrestation")
-    public TypePrestation GetTypePrestation(TypePrestation typePrestations){
+    public TypePrestationDTO GetTypePrestation(TypePrestationDTO typePrestations){
         return typePrestation.save(typePrestations);
     }
     @GetMapping("/findAllType")
@@ -25,9 +26,10 @@ public class TypePrestationController {
 
     }
     @PostMapping("/AddType")
-    public TypePrestation getType(@RequestBody TypePrestation type) {
+    public TypePrestationDTO getType(@RequestBody TypePrestationDTO type) {
         return typePrestation.save(type);
     }
+
 //    @DeleteMapping("/DeleteType/{type}")
 //    public void deleteType(@PathVariable("type") Long type) {
 //        typeService.delete(type);

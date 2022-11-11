@@ -1,5 +1,7 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
+import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
+import com.gestionDePov.GestionPov.Mapping.TypePrestationMapper;
 import com.gestionDePov.GestionPov.Model.TypePrestation;
 import com.gestionDePov.GestionPov.Repository.TypePrestationRepo;
 import com.gestionDePov.GestionPov.Service.TypePrestationService;
@@ -12,9 +14,12 @@ import java.util.List;
 public class TypePrestationImpl implements TypePrestationService {
     @Autowired
     TypePrestationRepo typePrestationRepo;
+    @Autowired
+    TypePrestationMapper typePrestationMapper;
     @Override
-    public TypePrestation save(TypePrestation typePrestation) {
-        return typePrestationRepo.save(typePrestation);
+    public TypePrestationDTO save(TypePrestationDTO typePrestation) {
+        return typePrestationMapper.TypeToTypeDTO(typePrestationRepo.save(typePrestationMapper.TypeDTOToType(typePrestation)));
+//         typePrestationRepo.save(typePrestation);
     }
 
     @Override
