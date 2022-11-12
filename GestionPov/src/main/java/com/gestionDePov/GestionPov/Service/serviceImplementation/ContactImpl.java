@@ -1,5 +1,7 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
+import com.gestionDePov.GestionPov.DTO.ContactDTO;
+import com.gestionDePov.GestionPov.Mapping.ContactMapper;
 import com.gestionDePov.GestionPov.Model.Client;
 import com.gestionDePov.GestionPov.Model.Contact;
 import com.gestionDePov.GestionPov.Repository.ClientRepo;
@@ -13,8 +15,24 @@ public class ContactImpl implements ContactService {
 
     @Autowired
     ContactRepo contactRepo;
+    @Autowired
+    ContactMapper contactMapper;
 
-    public Contact save(Contact contact) {
-        return contactRepo.save(contact);
+    public ContactDTO save(ContactDTO contact) {
+        return contactMapper.ContactToContactDTO(contactRepo.save(contactMapper.ContactDTOToContact(contact)));
     }
-}
+
+    @Override
+    public void delete(Long contact) {
+        boolean exists =contactRepo.existsById(contact);
+        if (!exists){
+            throw new IllegalStateException(
+                    "Type with id "+contact+" does not exists");
+        }
+        contactRepo.deleteById(contact);
+
+    }
+    }
+
+
+

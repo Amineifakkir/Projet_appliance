@@ -1,6 +1,7 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
+import com.gestionDePov.GestionPov.Mapping.ApplianceMapper;
 import com.gestionDePov.GestionPov.Model.Appliance;
 import com.gestionDePov.GestionPov.Repository.ApplianceRepo;
 import com.gestionDePov.GestionPov.Service.ApplianceService;
@@ -12,9 +13,23 @@ public class ApplianceImpl implements ApplianceService {
 
     @Autowired
     ApplianceRepo applianceRepo;
+    @Autowired
+    ApplianceMapper applianceMapper;
     @Override
-    public Appliance save(Appliance appliance) {
+    public ApplianceDTO save(ApplianceDTO appliance) {
 
-        return applianceRepo.save(appliance);
+        return applianceMapper.ApplianceToApplianceDTO(applianceRepo.save(applianceMapper.ApplianceDTOToAppliance(appliance)));
     }
-}
+
+    @Override
+    public void delete(Long appliance) {
+        boolean exists =applianceRepo.existsById(appliance);
+        if (!exists){
+            throw new IllegalStateException(
+                    "Type with id "+appliance+" does not exists");
+        }
+        applianceRepo.deleteById(appliance);
+
+    }
+    }
+
