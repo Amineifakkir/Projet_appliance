@@ -12,4 +12,6 @@ public interface TypePrestationService {
     void delete(Long type);
 
     List<TypePrestation> findAll();
+
+    //Update is Delete with Insert in BD or check if id exist 1
 }

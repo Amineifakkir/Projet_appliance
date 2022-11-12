@@ -1,6 +1,8 @@
 package com.gestionDePov.GestionPov.Controller;
 
+import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
 import com.gestionDePov.GestionPov.Model.Appliance;
+import com.gestionDePov.GestionPov.Service.ApplianceService;
 import com.gestionDePov.GestionPov.Service.serviceImplementation.ApplianceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
     @RequestMapping("/Appliance")
 
 public class ApplianceController {
-        private final ApplianceImpl appliance;
+        private final ApplianceService appliance;
 
 
 
@@ -21,7 +23,7 @@ public class ApplianceController {
         }
 
         @GetMapping("/GetAppliance")
-        public Appliance getAppliances(Appliance appliances) {
+        public ApplianceDTO getAppliances(ApplianceDTO appliances) {
             return appliance.save(appliances);
         }
 

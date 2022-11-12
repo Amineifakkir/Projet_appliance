@@ -11,5 +11,7 @@ public interface TypeService {
     TypeDTO save(TypeDTO typeDTO);
     void delete(Long type);
 
-//    List<TypeDTO> findAll(List<Type> types);
+//    List<TypeDTO> findAll();
+
+    TypeDTO Update(Long type,TypeDTO typeDTO);
 }

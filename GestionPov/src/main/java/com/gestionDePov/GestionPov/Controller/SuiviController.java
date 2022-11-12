@@ -1,7 +1,9 @@
 package com.gestionDePov.GestionPov.Controller;
 
+import com.gestionDePov.GestionPov.DTO.SuiviDTO;
 import com.gestionDePov.GestionPov.Model.POV;
 import com.gestionDePov.GestionPov.Model.Suivi;
+import com.gestionDePov.GestionPov.Service.SuiviService;
 import com.gestionDePov.GestionPov.Service.serviceImplementation.PovImpl;
 import com.gestionDePov.GestionPov.Service.serviceImplementation.SuiviImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/Suivi")
 public class SuiviController {
 
-    private final SuiviImpl suivi;
+    private final SuiviService suivi;
     @Autowired
-
-
-    public SuiviController(SuiviImpl suivi) {
+    public SuiviController(SuiviService suivi) {
         this.suivi = suivi;
     }
 
     @GetMapping("/GetSuivi")
-    public Suivi GetSuivi(Suivi suivis){
+    public SuiviDTO GetSuivi(SuiviDTO suivis){
         return suivi.save(suivis);
     }
 }

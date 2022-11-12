@@ -17,13 +17,13 @@ public class TypeImpl implements TypeService {
     TypeRepo typeRepo;
     @Autowired
     TypeMapper typeMapper;
-
+//adding another line int DataBase
     @Override
     public TypeDTO save(TypeDTO typedto) {
        return typeMapper.TypeToTypeDTO(typeRepo.save(typeMapper.TypeDTOToType(typedto)));
 
     }
-
+//Deleting a existing Line In the database
     @Override
     public void delete(Long idType) {
         boolean exists =typeRepo.existsById(idType);
@@ -35,6 +35,18 @@ public class TypeImpl implements TypeService {
 
         typeRepo.deleteById(idType);
 
+    }
+
+    @Override
+    public TypeDTO Update(Long type,TypeDTO typeDTO) {
+        boolean exists =typeRepo.existsById(type);
+        if (!exists){
+          save(typeDTO);
+
+        }else {
+             delete(type);
+        }
+   return null;
     }
 //    @Override
 //    public List<TypeDTO> findAll(TypeDTO typeDTO){
