@@ -44,16 +44,15 @@ public class TypeImpl implements TypeService {
 
     }
 
-    //    @Override
-//    public TypeDTO Update(Long type,TypeDTO typeDTO) {
-//        boolean exists =typeRepo.existsById(type);
-//        if (!exists){
-//          save(typeDTO);
-//
-//        }else {
-//             delete(type);
-//        }
-//   return null;
-//    }
+    @Override
+    public TypeDTO Update(Long type,TypeDTO typeDTO) {
+        boolean exists =typeRepo.existsById(type);
+        if (exists){
+          save(typeDTO);
+
+        }
+
+   return null;
+    }
 
 }

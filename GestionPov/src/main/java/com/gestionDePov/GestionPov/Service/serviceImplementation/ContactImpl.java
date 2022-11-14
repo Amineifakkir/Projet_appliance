@@ -10,6 +10,8 @@ import com.gestionDePov.GestionPov.Service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContactImpl implements ContactService {
 
@@ -32,7 +34,12 @@ public class ContactImpl implements ContactService {
         contactRepo.deleteById(contact);
 
     }
+
+    @Override
+    public List<ContactDTO> findAll() {
+        return null;
     }
+}
 
 
 

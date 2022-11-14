@@ -1,8 +1,7 @@
 package com.gestionDePov.GestionPov.Service;
 
 import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
-import com.gestionDePov.GestionPov.Model.Type;
-import com.gestionDePov.GestionPov.Model.TypePrestation;
+
 
 import java.util.List;
 
