@@ -8,6 +8,8 @@ import com.gestionDePov.GestionPov.Service.PovService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PovImpl implements PovService {
     @Autowired
@@ -32,6 +34,12 @@ PovMapper povMapper;
         povRepo.deleteById(Pov);
 
     }
+
+    @Override
+    public List<POVDTO> findAll() {
+        return povMapper.ListPovToPovDto(povRepo.findAll());
     }
+
+}
 
 

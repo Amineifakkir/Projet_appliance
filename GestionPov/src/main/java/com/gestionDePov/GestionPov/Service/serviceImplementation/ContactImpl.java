@@ -17,7 +17,7 @@ public class ContactImpl implements ContactService {
     ContactRepo contactRepo;
     @Autowired
     ContactMapper contactMapper;
-
+    @Autowired
     public ContactDTO save(ContactDTO contact) {
         return contactMapper.ContactToContactDTO(contactRepo.save(contactMapper.ContactDTOToContact(contact)));
     }

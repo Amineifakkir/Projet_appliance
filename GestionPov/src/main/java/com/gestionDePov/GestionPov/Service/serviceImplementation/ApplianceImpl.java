@@ -8,6 +8,8 @@ import com.gestionDePov.GestionPov.Service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApplianceImpl implements ApplianceService {
 
@@ -31,5 +33,10 @@ public class ApplianceImpl implements ApplianceService {
         applianceRepo.deleteById(appliance);
 
     }
+
+    @Override
+    public List<ApplianceDTO> findAll() {
+        return applianceMapper.ListEntityApplianceToEntityAppliance(applianceRepo.findAll());
     }
+}
 

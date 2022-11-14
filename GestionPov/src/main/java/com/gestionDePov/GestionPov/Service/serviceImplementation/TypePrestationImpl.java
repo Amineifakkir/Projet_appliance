@@ -8,6 +8,7 @@ import com.gestionDePov.GestionPov.Service.TypePrestationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,8 +33,12 @@ public class TypePrestationImpl implements TypePrestationService {
         typePrestationRepo.deleteById(type);
 
     }
+
     @Override
-    public List<TypePrestation> findAll() {
-        return typePrestationRepo.findAll();
+    public List<TypePrestationDTO> findAlltype() {
+
+        return typePrestationMapper.ListEntityTypePrestationToDTOTypePrestation(typePrestationRepo.findAll());
     }
+
+
 }

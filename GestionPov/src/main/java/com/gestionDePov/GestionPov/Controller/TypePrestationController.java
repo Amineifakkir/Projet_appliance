@@ -20,9 +20,9 @@ public class TypePrestationController {
         return typePrestation.save(typePrestations);
     }
     @GetMapping("/findAllType")
-    public List<TypePrestation> registerNewStudent(){
+    public List<TypePrestationDTO> registerNewStudent(){
 
-        return typePrestation.findAll();
+        return typePrestation.findAlltype();
 
     }
     @PostMapping("/AddType")

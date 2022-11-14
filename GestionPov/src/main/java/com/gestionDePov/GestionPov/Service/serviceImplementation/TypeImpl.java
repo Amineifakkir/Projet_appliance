@@ -38,19 +38,22 @@ public class TypeImpl implements TypeService {
     }
 
     @Override
-    public TypeDTO Update(Long type,TypeDTO typeDTO) {
-        boolean exists =typeRepo.existsById(type);
-        if (!exists){
-          save(typeDTO);
+    public List<TypeDTO> findAllType() {
 
-        }else {
-             delete(type);
-        }
-   return null;
+        return typeMapper.ListEntityTypeToEntityType(typeRepo.findAll());
+
     }
-//    @Override
-//    public List<TypeDTO> findAll(TypeDTO typeDTO){
-//     List<TypeDTO> LstType = new ArrayList<>();
-//        return typeMapper.ListEntityTypeToEntityType(typeRepo.findAll(typeMapper.ListTypeDTOToEntityType(LstType)));
+
+    //    @Override
+//    public TypeDTO Update(Long type,TypeDTO typeDTO) {
+//        boolean exists =typeRepo.existsById(type);
+//        if (!exists){
+//          save(typeDTO);
+//
+//        }else {
+//             delete(type);
+//        }
+//   return null;
 //    }
+
 }

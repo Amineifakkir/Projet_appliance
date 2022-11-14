@@ -8,6 +8,8 @@ import com.gestionDePov.GestionPov.Service.SeanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SeanceImpl implements SeanceService {
 
@@ -31,5 +33,10 @@ public class SeanceImpl implements SeanceService {
         seanceRepo.deleteById(seance);
 
     }
+
+    @Override
+    public List<SeanceDTO> findAll() {
+        return seanceMapper.ListSeanceDTOToEntitySeance(seanceRepo.findAll());
     }
+}
 
