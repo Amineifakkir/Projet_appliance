@@ -2,8 +2,6 @@ package com.gestionDePov.GestionPov.Service;
 
 
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
-import com.gestionDePov.GestionPov.DTO.SeanceDTO;
-import com.gestionDePov.GestionPov.Model.Appliance;
 
 import java.util.List;
 

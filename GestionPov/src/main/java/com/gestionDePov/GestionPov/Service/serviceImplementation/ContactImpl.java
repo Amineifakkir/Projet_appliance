@@ -39,6 +39,17 @@ public class ContactImpl implements ContactService {
     public List<ContactDTO> findAll() {
         return null;
     }
+
+    @Override
+    public ContactDTO Update(Long idContact, ContactDTO contactDTO) {
+        boolean exists =contactRepo.existsById(idContact);
+        if (exists){
+            save(contactDTO);
+
+        }
+
+        return contactDTO;
+    }
 }
 
 

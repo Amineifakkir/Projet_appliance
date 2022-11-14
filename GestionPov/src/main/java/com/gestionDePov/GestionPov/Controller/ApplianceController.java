@@ -1,7 +1,6 @@
 package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
-import com.gestionDePov.GestionPov.Model.Appliance;
 import com.gestionDePov.GestionPov.Service.ApplianceService;
 import com.gestionDePov.GestionPov.Service.serviceImplementation.ApplianceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

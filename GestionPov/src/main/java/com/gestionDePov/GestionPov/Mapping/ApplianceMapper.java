@@ -17,7 +17,7 @@ public class ApplianceMapper {
     //Entity To Dto
     public ApplianceDTO ApplianceToApplianceDTO(Appliance appliance){
 
-        ApplianceDTO applianceDTO = dozerBeanMapper.map(appliance,ApplianceDTO.class);
+        ApplianceDTO applianceDTO = dozerBeanMapper.map(appliance, ApplianceDTO.class);
 
         if(appliance.getIdType()!= null){
             appliance.setIdType(typeMapper.TypeDTOToType(applianceDTO.getIdTypeDTO()));

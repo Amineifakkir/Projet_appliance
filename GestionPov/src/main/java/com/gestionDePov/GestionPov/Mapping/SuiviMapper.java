@@ -1,8 +1,6 @@
 package com.gestionDePov.GestionPov.Mapping;
 
-import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
 import com.gestionDePov.GestionPov.DTO.SuiviDTO;
-import com.gestionDePov.GestionPov.Model.Appliance;
 import com.gestionDePov.GestionPov.Model.Suivi;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;

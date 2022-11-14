@@ -2,6 +2,7 @@ package com.gestionDePov.GestionPov.Service;
 
 import com.gestionDePov.GestionPov.DTO.ClientDTO;
 import com.gestionDePov.GestionPov.DTO.SeanceDTO;
+import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 import com.gestionDePov.GestionPov.Model.Client;
 
 import java.util.List;
@@ -12,5 +13,7 @@ public interface ClientService {
     void delete(Long client);
 
     List<ClientDTO> findAll();
+
+    ClientDTO Update(Long idClient, ClientDTO clientDTO);
 
 }

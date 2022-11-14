@@ -1,5 +1,6 @@
 package com.gestionDePov.GestionPov.Service;
 
+import com.gestionDePov.GestionPov.DTO.TypeDTO;
 import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 
 
@@ -11,8 +12,7 @@ public interface TypePrestationService {
     void delete(Long type);
 
    List<TypePrestationDTO> findAlltype();
-
-//    List<TypePrestationDTO> findAll(List<TypePrestationDTO> typePrestationDTOS);
+    TypePrestationDTO Update(Long type, TypePrestationDTO typeDTO);
 
     //Update is Delete with Insert in BD or check if id exist 1
 }

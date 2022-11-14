@@ -52,7 +52,7 @@ public class TypeImpl implements TypeService {
 
         }
 
-   return null;
+   return typeDTO;
     }
 
 }

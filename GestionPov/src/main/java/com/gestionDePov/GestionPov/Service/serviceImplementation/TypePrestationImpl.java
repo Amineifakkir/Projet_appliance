@@ -40,5 +40,15 @@ public class TypePrestationImpl implements TypePrestationService {
         return typePrestationMapper.ListEntityTypePrestationToDTOTypePrestation(typePrestationRepo.findAll());
     }
 
+    @Override
+    public TypePrestationDTO Update(Long type, TypePrestationDTO typeDTO) {
+        boolean exists = typePrestationRepo.existsById(type);
+        if (exists) {
+            save(typeDTO);
 
+        }
+
+
+        return typeDTO;
+    }
 }

@@ -40,6 +40,17 @@ PovMapper povMapper;
         return povMapper.ListPovToPovDto(povRepo.findAll());
     }
 
+    @Override
+    public POVDTO Update(Long idPov, POVDTO povDTO) {
+        boolean exists =povRepo.existsById(idPov);
+        if (exists){
+            save(povDTO);
+
+        }
+
+        return povDTO;
+    }
+
 }
 
 

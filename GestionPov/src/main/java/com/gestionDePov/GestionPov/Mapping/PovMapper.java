@@ -1,10 +1,6 @@
 package com.gestionDePov.GestionPov.Mapping;
 
-import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
-import com.gestionDePov.GestionPov.DTO.ClientDTO;
 import com.gestionDePov.GestionPov.DTO.POVDTO;
-import com.gestionDePov.GestionPov.Model.Appliance;
-import com.gestionDePov.GestionPov.Model.Client;
 import com.gestionDePov.GestionPov.Model.POV;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;

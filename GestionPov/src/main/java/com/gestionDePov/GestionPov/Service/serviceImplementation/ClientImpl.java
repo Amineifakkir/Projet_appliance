@@ -38,5 +38,17 @@ public class ClientImpl implements ClientService{
     public List<ClientDTO> findAll() {
         return clientMapper.ListEntityClientToEntityClient(clientRepo.findAll());
     }
+
+    @Override
+    public ClientDTO Update(Long idClient, ClientDTO clientDTO) {
+        boolean exists =clientRepo.existsById(idClient);
+        if (exists){
+            save(clientDTO);
+
+        }
+
+        return clientDTO;
+
+    }
 }
 

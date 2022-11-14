@@ -38,5 +38,16 @@ public class SeanceImpl implements SeanceService {
     public List<SeanceDTO> findAll() {
         return seanceMapper.ListSeanceDTOToEntitySeance(seanceRepo.findAll());
     }
+
+    @Override
+    public SeanceDTO Update(Long idSeance, SeanceDTO typeDTO) {
+        boolean exists =seanceRepo.existsById(idSeance);
+        if (exists){
+            save(typeDTO);
+
+        }
+
+        return typeDTO;
+    }
 }
 
