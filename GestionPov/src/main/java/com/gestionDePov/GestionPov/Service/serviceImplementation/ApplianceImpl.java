@@ -37,5 +37,18 @@ public class ApplianceImpl implements ApplianceService {
     public List<ApplianceDTO> findAll() {
         return applianceMapper.ListEntityApplianceToEntityAppliance(applianceRepo.findAll());
     }
+
+    @Override
+    public ApplianceDTO Update(Long type, ApplianceDTO applianceDTO) {
+        boolean exists =applianceRepo.existsById(type);
+        if (exists){
+            save(applianceDTO);
+
+        }
+
+        return applianceDTO;
+
+
+    }
 }
 

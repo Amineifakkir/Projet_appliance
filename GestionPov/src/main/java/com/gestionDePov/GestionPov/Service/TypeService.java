@@ -7,10 +7,10 @@ import java.util.List;
 
 
 public interface TypeService {
-    TypeDTO save(TypeDTO typeDTO);
-    void delete(Long type);
+    TypeDTO save(TypeDTO typeDTO);  //Post
+    void delete(Long type);  //Delete
 
-    List<TypeDTO> findAllType();
+    List<TypeDTO> findAllType(); //Get
 
-    TypeDTO Update(Long type,TypeDTO typeDTO);
+    TypeDTO Update(Long type,TypeDTO typeDTO); //Put
 }

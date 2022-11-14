@@ -1,6 +1,7 @@
 package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.TypeDTO;
+import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 import com.gestionDePov.GestionPov.Service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +35,8 @@ public class TypeController {
     }
 
 
-
+    @PutMapping("/Update")
+    public TypeDTO UpdateType(@PathVariable("type") Long type, @RequestBody TypeDTO typeDTO){
+        return typeService.Update(type,typeDTO);
+    }
 }

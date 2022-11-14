@@ -15,10 +15,7 @@ public class TypePrestationController {
     @Autowired
     private TypePrestationService typePrestation;
 
-    @GetMapping("/GetTypePrestation")
-    public TypePrestationDTO GetTypePrestation(TypePrestationDTO typePrestations){
-        return typePrestation.save(typePrestations);
-    }
+
     @GetMapping("/findAllType")
     public List<TypePrestationDTO> registerNewStudent(){
 
@@ -30,8 +27,13 @@ public class TypePrestationController {
         return typePrestation.save(type);
     }
 
-//    @DeleteMapping("/DeleteType/{type}")
-//    public void deleteType(@PathVariable("type") Long type) {
-//        typeService.delete(type);
-//    }
+    @DeleteMapping("/DeleteType/{type}")
+    public void deleteType(@PathVariable("type") Long type) {
+        typePrestation.delete(type);
+    }
+
+    @PutMapping("/Update")
+    public TypePrestationDTO UpdateType(@PathVariable("type") Long type,@RequestBody TypePrestationDTO typePrestationDTO){
+    return typePrestation.Update(type,typePrestationDTO);
+    }
 }
