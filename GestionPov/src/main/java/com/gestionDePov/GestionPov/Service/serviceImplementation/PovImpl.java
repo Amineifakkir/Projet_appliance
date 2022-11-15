@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public class PovImpl implements PovService {
     @Autowired
     PovRepo povRepo;

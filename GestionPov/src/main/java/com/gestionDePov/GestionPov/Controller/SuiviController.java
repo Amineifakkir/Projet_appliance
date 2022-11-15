@@ -16,14 +16,11 @@ import java.util.List;
 @RequestMapping("/Suivi")
 public class SuiviController {
 
-    private final SuiviService suivi;
-    @Autowired
-    public SuiviController(SuiviService suivi) {
-        this.suivi = suivi;
-    }
+    private  SuiviService suivi;
+
 
     @PostMapping("/GetSuivi")
-    public SuiviDTO getSuivi(SuiviDTO suiviDTO) {
+    public SuiviDTO getSuivi(@RequestBody SuiviDTO suiviDTO) {
         return suivi.save(suiviDTO);
     }
     @GetMapping("/FindSuivi")

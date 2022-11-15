@@ -15,7 +15,7 @@ public class ApplianceDTO {
 
     public Long idAppliance;
     public  String Libelle;
-    public TypeDTO idTypeDTO; //FK_TYPE
+    public TypeDTO idType; //FK_TYPE
     public String DBID;
     public String Disponibilitte;
     public String References;

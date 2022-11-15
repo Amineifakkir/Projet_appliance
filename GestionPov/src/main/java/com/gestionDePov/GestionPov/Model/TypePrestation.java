@@ -17,7 +17,7 @@ public class TypePrestation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    public int idTypePres;
+    public Long idTypePres;
     public  String Libelle;
 
 

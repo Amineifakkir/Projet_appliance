@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/Type")
 public class TypeController {
-    @Autowired
+
     public TypeService typeService;
 //    @GetMapping("/findAllType")
 //    public List<TypePrestationDTO> registerNewStudent(){

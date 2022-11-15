@@ -12,11 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/Client")
 public class ClientController {
-    private final ClientService client;
-@Autowired
-    public ClientController(ClientImpl client) {
-        this.client = client;
-    }
+    private ClientService client;
+
 
     @PostMapping("/GetClient")
     public ClientDTO getClient(ClientDTO clientDTO) {

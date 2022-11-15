@@ -1,15 +1,17 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
+
 import com.gestionDePov.GestionPov.Mapping.ApplianceMapper;
 import com.gestionDePov.GestionPov.Repository.ApplianceRepo;
 import com.gestionDePov.GestionPov.Service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public class ApplianceImpl implements ApplianceService {
 
     @Autowired

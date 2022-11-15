@@ -1,8 +1,7 @@
 package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
-import com.gestionDePov.GestionPov.DTO.TypeDTO;
-import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
+
 import com.gestionDePov.GestionPov.Service.ApplianceService;
 import com.gestionDePov.GestionPov.Service.serviceImplementation.ApplianceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-    @RequestMapping("/Appliance")
-
+@RequestMapping("/Appliance")
 public class ApplianceController {
-        private final ApplianceService appliance;
+        private  ApplianceService appliance;
 
 
 
-        @Autowired
-        public ApplianceController(ApplianceImpl appliance) {
-            this.appliance = appliance;
-        }
+
 
     @PostMapping("/GetAppliance")
         public ApplianceDTO getAppliances(ApplianceDTO appliances) {

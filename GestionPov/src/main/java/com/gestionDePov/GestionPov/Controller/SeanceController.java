@@ -16,13 +16,8 @@ import java.util.List;
 @RequestMapping("/Seance")
 public class SeanceController {
 
-    private final SeanceService seance;
-    @Autowired
+    private SeanceService seance;
 
-
-    public SeanceController(SeanceService seance) {
-        this.seance= seance;
-    }
 
     @PostMapping("/GetSeance")
     public SeanceDTO getSeance(SeanceDTO seanceDTO) {

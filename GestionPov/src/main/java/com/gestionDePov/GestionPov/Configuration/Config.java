@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Config {
-    @Bean
+@Bean
     DozerBeanMapper dozerBeanMapper(){
         return new DozerBeanMapper();
     };

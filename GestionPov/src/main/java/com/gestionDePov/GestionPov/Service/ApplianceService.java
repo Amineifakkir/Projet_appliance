@@ -2,10 +2,11 @@ package com.gestionDePov.GestionPov.Service;
 
 
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
-import com.gestionDePov.GestionPov.DTO.TypeDTO;
+
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface ApplianceService {
 
 

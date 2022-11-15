@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/TypePrestation")
 public class TypePrestationController {
-    @Autowired
+
     private TypePrestationService typePrestation;
 
 

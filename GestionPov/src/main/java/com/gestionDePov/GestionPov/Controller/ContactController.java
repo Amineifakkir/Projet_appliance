@@ -14,12 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/Contact")
 public class ContactController {
-    private final ContactService contact;
+    private  ContactService contact;
 
-@Autowired
-    public ContactController(ContactImpl contact) {
-        this.contact = contact;
-    }
+
     @PostMapping("/GetContact")
     public ContactDTO getContact(ContactDTO contactDTO) {
         return contact.save(contactDTO);

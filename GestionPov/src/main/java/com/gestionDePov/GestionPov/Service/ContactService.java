@@ -1,10 +1,12 @@
 package com.gestionDePov.GestionPov.Service;
 
 import com.gestionDePov.GestionPov.DTO.ContactDTO;
-import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
+
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+@Service
 
 public interface ContactService {
     ContactDTO save(ContactDTO contact);

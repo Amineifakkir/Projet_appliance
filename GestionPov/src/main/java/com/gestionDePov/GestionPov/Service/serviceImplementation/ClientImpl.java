@@ -3,15 +3,15 @@ package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
 import com.gestionDePov.GestionPov.DTO.ClientDTO;
 import com.gestionDePov.GestionPov.Mapping.ClientMapper;
-import com.gestionDePov.GestionPov.Model.Client;
+
 import com.gestionDePov.GestionPov.Repository.ClientRepo;
 import com.gestionDePov.GestionPov.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
-@Service
+
 public class ClientImpl implements ClientService{
 
     @Autowired
