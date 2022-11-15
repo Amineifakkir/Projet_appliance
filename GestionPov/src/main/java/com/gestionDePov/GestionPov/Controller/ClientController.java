@@ -12,11 +12,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/Client")
 public class ClientController {
+    @Autowired
     private ClientService client;
 
 
-    @PostMapping("/GetClient")
-    public ClientDTO getClient(ClientDTO clientDTO) {
+    @PostMapping("/add")
+    public ClientDTO getClient(@RequestBody ClientDTO clientDTO) {
         return client.save(clientDTO);
     }
     @GetMapping("/FindClient")

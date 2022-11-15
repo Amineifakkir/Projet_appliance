@@ -6,18 +6,19 @@ import com.gestionDePov.GestionPov.Mapping.ContactMapper;
 import com.gestionDePov.GestionPov.Repository.ContactRepo;
 import com.gestionDePov.GestionPov.Service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
-
+@Service
 public class ContactImpl implements ContactService {
 
     @Autowired
     ContactRepo contactRepo;
     @Autowired
     ContactMapper contactMapper;
-    @Autowired
+@Override
     public ContactDTO save(ContactDTO contact) {
         return contactMapper.ContactToContactDTO(contactRepo.save(contactMapper.ContactDTOToContact(contact)));
     }
@@ -42,7 +43,8 @@ public class ContactImpl implements ContactService {
     public ContactDTO Update(Long idContact, ContactDTO contactDTO) {
         boolean exists =contactRepo.existsById(idContact);
         if (exists){
-            save(contactDTO);
+            contactDTO.setIdContact(idContact);
+            contactRepo.save(contactMapper.ContactDTOToContact(contactDTO));
 
         }
 

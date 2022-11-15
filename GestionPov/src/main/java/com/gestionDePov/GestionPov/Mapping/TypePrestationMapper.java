@@ -6,9 +6,11 @@ import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 import com.gestionDePov.GestionPov.Model.TypePrestation;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+@Component
 public class TypePrestationMapper {
 @Autowired
 DozerBeanMapper dozerBeanMapper;

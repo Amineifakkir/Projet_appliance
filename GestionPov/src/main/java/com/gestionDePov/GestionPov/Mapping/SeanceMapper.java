@@ -6,10 +6,11 @@ import com.gestionDePov.GestionPov.Model.Contact;
 import com.gestionDePov.GestionPov.Model.Seance;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class SeanceMapper {
 
     @Autowired

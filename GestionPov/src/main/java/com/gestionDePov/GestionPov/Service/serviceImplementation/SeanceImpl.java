@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public class SeanceImpl implements SeanceService {
 
     @Autowired
@@ -40,14 +40,15 @@ public class SeanceImpl implements SeanceService {
     }
 
     @Override
-    public SeanceDTO Update(Long idSeance, SeanceDTO typeDTO) {
+    public SeanceDTO Update(Long idSeance, SeanceDTO seanceDTO) {
         boolean exists =seanceRepo.existsById(idSeance);
         if (exists){
-            save(typeDTO);
+            seanceDTO.setIdSeance(idSeance);
+             seanceRepo.save(seanceMapper.SeanceDtoToSeance(seanceDTO));
 
         }
 
-        return typeDTO;
+        return seanceDTO;
     }
 }
 

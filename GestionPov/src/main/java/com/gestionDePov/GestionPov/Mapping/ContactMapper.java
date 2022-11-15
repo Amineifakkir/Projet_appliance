@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+@Component
 public class ContactMapper {
     @Autowired
     DozerBeanMapper dozerBeanMapper;

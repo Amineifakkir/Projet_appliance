@@ -6,12 +6,11 @@ import com.gestionDePov.GestionPov.Mapping.ApplianceMapper;
 import com.gestionDePov.GestionPov.Repository.ApplianceRepo;
 import com.gestionDePov.GestionPov.Service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public class ApplianceImpl implements ApplianceService {
 
     @Autowired
@@ -21,7 +20,11 @@ public class ApplianceImpl implements ApplianceService {
     @Override
     public ApplianceDTO save(ApplianceDTO appliance) {
 
-        return applianceMapper.ApplianceToApplianceDTO(applianceRepo.save(applianceMapper.ApplianceDTOToAppliance(appliance)));
+        return applianceMapper.ApplianceToApplianceDTO(
+                applianceRepo.save(
+                        applianceMapper.ApplianceDTOToAppliance(appliance)
+                )
+        );
     }
 
     @Override
@@ -44,7 +47,8 @@ public class ApplianceImpl implements ApplianceService {
     public ApplianceDTO Update(Long type, ApplianceDTO applianceDTO) {
         boolean exists =applianceRepo.existsById(type);
         if (exists){
-            save(applianceDTO);
+            applianceDTO.setIdAppliance(type);
+            applianceRepo.save(applianceMapper.ApplianceDTOToAppliance(applianceDTO));
 
         }
 

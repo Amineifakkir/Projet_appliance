@@ -4,10 +4,11 @@ import com.gestionDePov.GestionPov.DTO.POVDTO;
 import com.gestionDePov.GestionPov.Model.POV;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class PovMapper {
     @Autowired
     DozerBeanMapper dozerBeanMapper;

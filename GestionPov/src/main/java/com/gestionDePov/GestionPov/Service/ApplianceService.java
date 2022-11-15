@@ -6,7 +6,7 @@ import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
+
 public interface ApplianceService {
 
 

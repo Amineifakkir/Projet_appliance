@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public class PovImpl implements PovService {
     @Autowired
     PovRepo povRepo;
@@ -44,7 +44,8 @@ PovMapper povMapper;
     public POVDTO Update(Long idPov, POVDTO povDTO) {
         boolean exists =povRepo.existsById(idPov);
         if (exists){
-            save(povDTO);
+            povDTO.setIdPov(idPov);
+            povRepo.save(povMapper.PovDtoToPov(povDTO));
 
         }
 

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table
+
 public class TypeDTO {
     public Long idType;
     public  String Libelle;

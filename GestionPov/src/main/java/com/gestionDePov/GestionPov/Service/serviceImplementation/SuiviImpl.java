@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public class SuiviImpl implements SuiviService {
     @Autowired
     SuiviRepo suiviRepo;
@@ -47,7 +47,8 @@ public class SuiviImpl implements SuiviService {
     public SuiviDTO Update(Long type, SuiviDTO suiviDTO) {
         boolean exists =suiviRepo.existsById(type);
         if (exists){
-            save(suiviDTO);
+            suiviDTO.setIdSuivi(type);
+            suiviRepo.save(suiviMapper.SuiviDTOToSuivi(suiviDTO));
 
         }
 

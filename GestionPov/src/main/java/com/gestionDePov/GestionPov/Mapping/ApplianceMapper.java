@@ -4,11 +4,12 @@ import com.gestionDePov.GestionPov.DTO.ApplianceDTO;;
 import com.gestionDePov.GestionPov.Model.Appliance;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class ApplianceMapper {
     @Autowired
     DozerBeanMapper dozerBeanMapper;

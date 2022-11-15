@@ -4,19 +4,21 @@ import com.gestionDePov.GestionPov.DTO.ClientDTO;
 import com.gestionDePov.GestionPov.Model.Client;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class ClientMapper {
 
     @Autowired
     DozerBeanMapper dozerBeanMapper;
 
     //Entity To Dto
-    public ClientDTO ClientToClientDTO(Client Cl){
-        ClientDTO CltDTO = dozerBeanMapper.map(Cl,ClientDTO.class);
-        return CltDTO;
+    public ClientDTO ClientToClientDTO(Client client){
+
+
+        return dozerBeanMapper.map(client,ClientDTO.class);
     }
 // Dto To Entity
     public Client ClientDTOToClient(ClientDTO Cl){

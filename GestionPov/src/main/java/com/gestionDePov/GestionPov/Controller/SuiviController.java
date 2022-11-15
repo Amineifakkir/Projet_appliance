@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/Suivi")
 public class SuiviController {
-
+@Autowired
     private  SuiviService suivi;
 
 

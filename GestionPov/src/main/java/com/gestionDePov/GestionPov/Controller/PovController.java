@@ -13,11 +13,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/Pov")
 public class PovController {
+    @Autowired
     private  PovService pov;
 
 
     @PostMapping("/GetPov")
-    public POVDTO getPOV(POVDTO povdto) {
+    public POVDTO getPOV(@RequestBody POVDTO povdto) {
         return pov.save(povdto);
     }
     @GetMapping("/FindPOV")

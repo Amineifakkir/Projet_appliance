@@ -15,12 +15,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/Seance")
 public class SeanceController {
-
+@Autowired
     private SeanceService seance;
 
 
     @PostMapping("/GetSeance")
-    public SeanceDTO getSeance(SeanceDTO seanceDTO) {
+    public SeanceDTO getSeance(@RequestBody SeanceDTO seanceDTO) {
         return seance.save(seanceDTO);
     }
     @GetMapping("/FindPOV")

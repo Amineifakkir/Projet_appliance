@@ -4,10 +4,11 @@ import com.gestionDePov.GestionPov.DTO.SuiviDTO;
 import com.gestionDePov.GestionPov.Model.Suivi;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class SuiviMapper {
     @Autowired
     DozerBeanMapper dozerBeanMapper;

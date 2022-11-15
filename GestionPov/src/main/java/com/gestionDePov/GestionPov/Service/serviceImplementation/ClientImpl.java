@@ -7,11 +7,12 @@ import com.gestionDePov.GestionPov.Mapping.ClientMapper;
 import com.gestionDePov.GestionPov.Repository.ClientRepo;
 import com.gestionDePov.GestionPov.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
-
+@Service
 public class ClientImpl implements ClientService{
 
     @Autowired
@@ -19,6 +20,8 @@ public class ClientImpl implements ClientService{
     @Autowired
     ClientMapper clientMapper;
 
+
+    @Override
     public ClientDTO save(ClientDTO client) {
         return clientMapper.ClientToClientDTO(clientRepo.save(clientMapper.ClientDTOToClient(client)));
     }
@@ -43,7 +46,8 @@ public class ClientImpl implements ClientService{
     public ClientDTO Update(Long idClient, ClientDTO clientDTO) {
         boolean exists =clientRepo.existsById(idClient);
         if (exists){
-            save(clientDTO);
+            clientDTO.setIdClt(idClient);
+            clientRepo.save(clientMapper.ClientDTOToClient(clientDTO));
 
         }
 

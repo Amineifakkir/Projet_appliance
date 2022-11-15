@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface TypeService {
     TypeDTO save(TypeDTO typeDTO);  //Post
     void delete(Long type);  //Delete

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class TypePrestationImpl implements TypePrestationService {
     @Autowired
     TypePrestationRepo typePrestationRepo;
@@ -44,7 +44,8 @@ public class TypePrestationImpl implements TypePrestationService {
     public TypePrestationDTO Update(Long type, TypePrestationDTO typeDTO) {
         boolean exists = typePrestationRepo.existsById(type);
         if (exists) {
-            save(typeDTO);
+            typeDTO.setIdTypePres(type);
+            typePrestationRepo.save(typePrestationMapper.TypeDTOToType(typeDTO));
 
         }
 

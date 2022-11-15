@@ -5,7 +5,7 @@ import com.gestionDePov.GestionPov.DTO.ClientDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
+
 public interface ClientService {
 
     ClientDTO save(ClientDTO client);

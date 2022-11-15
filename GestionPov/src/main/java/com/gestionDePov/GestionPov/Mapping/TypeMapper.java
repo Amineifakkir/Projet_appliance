@@ -20,16 +20,14 @@ public class TypeMapper {
     //Entity To Dto
 
     public TypeDTO TypeToTypeDTO(Type tp){
-        TypeDTO tpDTO = dozerBeanMapper.map(tp,TypeDTO.class);
-
-
-        return tpDTO;
+         ;
+    return dozerBeanMapper.map(tp,TypeDTO.class);
     }
 //    Dto To Entity
 
     public Type TypeDTOToType(TypeDTO type){
-    Type tpDto = dozerBeanMapper.map(type,Type.class);
-    return tpDto;
+        return dozerBeanMapper.map(type,Type.class);
+
 }
 
 //List Dto To List Entity

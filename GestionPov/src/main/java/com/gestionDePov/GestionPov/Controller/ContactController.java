@@ -14,11 +14,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/Contact")
 public class ContactController {
+    @Autowired
     private  ContactService contact;
 
 
     @PostMapping("/GetContact")
-    public ContactDTO getContact(ContactDTO contactDTO) {
+    public ContactDTO getContact(@RequestBody ContactDTO contactDTO) {
         return contact.save(contactDTO);
     }
     @GetMapping("/FindAppliance")

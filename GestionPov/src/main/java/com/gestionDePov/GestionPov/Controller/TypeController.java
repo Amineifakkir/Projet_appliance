@@ -6,26 +6,24 @@ import com.gestionDePov.GestionPov.Service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/Type")
 public class TypeController {
+@Autowired
+    private  TypeService typeService;
 
-    public TypeService typeService;
-//    @GetMapping("/findAllType")
-//    public List<TypePrestationDTO> registerNewStudent(){
-//
-//        return typeService.findAlltype();
-//
-//    }
+    @GetMapping
+    public List<TypeDTO> registerNewStudent(){
 
-//    @GetMapping("/findAllType")
-//    public List<TypeDTO> registerNewStudent(){
-//
-////       return typeService.findAll(List<TypeDTO>);
-//
-//    }
-     @PostMapping("/AddType")
+        return typeService.findAllType();
+
+    }
+
+
+    @PostMapping
     public TypeDTO getType(@RequestBody TypeDTO type) {
         return typeService.save(type);
     }
@@ -35,8 +33,8 @@ public class TypeController {
     }
 
 
-    @PutMapping("/Update")
-    public TypeDTO UpdateType(@PathVariable("type") Long type, @RequestBody TypeDTO typeDTO){
+    @PutMapping("/Update/{type}")
+    public TypeDTO UpdateType(@PathVariable Long type, @RequestBody TypeDTO typeDTO){
         return typeService.Update(type,typeDTO);
     }
 }
