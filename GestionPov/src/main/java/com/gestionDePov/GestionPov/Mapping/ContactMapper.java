@@ -25,16 +25,16 @@ public class ContactMapper {
     public ContactDTO ContactToContactDTO(Contact Ct){
         ContactDTO CtDTO = dozerBeanMapper.map(Ct,ContactDTO.class);
 
-        if(Ct.getIdClient() != null){
-            Ct.setIdClient(clientMapper.ClientDTOToClient(CtDTO.getIdClient()));
+        if(CtDTO.getIdClient() != null){
+            CtDTO.setIdClient(clientMapper.ClientToClientDTO(Ct.getIdClient()));
          }
         return CtDTO;
     }
     //       Dto To Entity
     public Contact ContactDTOToContact (ContactDTO contactDTO) {
         Contact Ct = dozerBeanMapper.map(contactDTO, Contact.class);
-        if (contactDTO.getIdClient() != null) {
-            contactDTO.setIdClient(clientMapper.ClientToClientDTO(Ct.getIdClient()));
+        if (Ct.getIdClient() != null) {
+            Ct.setIdClient(clientMapper.ClientDTOToClient(contactDTO.getIdClient()));
         }
         return Ct;
 

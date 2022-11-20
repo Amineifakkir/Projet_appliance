@@ -10,20 +10,20 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/Type")
-public class TypeController {
+public class TypeController { 
 @Autowired
     private  TypeService typeService;
 
-    @GetMapping
+    @GetMapping("/find")
     public List<TypeDTO> registerNewStudent(){
 
         return typeService.findAllType();
 
     }
 
-
-    @PostMapping
+    @PostMapping("/addType")
     public TypeDTO getType(@RequestBody TypeDTO type) {
         return typeService.save(type);
     }

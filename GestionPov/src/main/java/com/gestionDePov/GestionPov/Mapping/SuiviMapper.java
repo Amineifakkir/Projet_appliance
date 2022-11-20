@@ -21,7 +21,7 @@ public class SuiviMapper {
 
         SuiviDTO suiviDTO = dozerBeanMapper.map(suivi,SuiviDTO.class);
 
-        if(suiviDTO.getTypePres()!= null){
+        if(suiviDTO.getTypePres()!= null ){
             suiviDTO.setTypePres(typePrestationMapper.TypeToTypeDTO(suivi.getTypePres()));
         }
         return suiviDTO;
