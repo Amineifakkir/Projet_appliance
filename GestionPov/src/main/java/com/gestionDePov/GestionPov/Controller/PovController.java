@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/Pov")
 public class PovController {
     @Autowired
@@ -25,14 +26,14 @@ public class PovController {
     public List<POVDTO> findPOV() {
         return pov.findAll();
     }
-    @DeleteMapping("/DeleteType/{idPov}")
+    @DeleteMapping("/DeletePov/{idPov}")
     public void deletePov(@PathVariable("idPov") Long idPov) {
         pov.delete(idPov);
     }
 
 
     @PutMapping("/Update/{idPov}")
-    public  POVDTO UpdatePovdto(@PathVariable("idPov") Long idPv, @RequestBody POVDTO povdto){
+    public  POVDTO UpdatePovdto(@PathVariable Long idPv, @RequestBody POVDTO povdto){
         return pov.Update(idPv,povdto);
     }
 }

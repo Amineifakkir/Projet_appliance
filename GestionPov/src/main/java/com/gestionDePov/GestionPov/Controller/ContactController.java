@@ -18,22 +18,22 @@ public class ContactController {
     private  ContactService contact;
 
 
-    @PostMapping("/GetContact")
+    @PostMapping("/add")
     public ContactDTO getContact(@RequestBody ContactDTO contactDTO) {
         return contact.save(contactDTO);
     }
-    @GetMapping("/FindAppliance")
+    @GetMapping("/FindContact")
     public List<ContactDTO> findContact() {
         return contact.findAll();
     }
-    @DeleteMapping("/DeleteType/{idContact}")
+    @DeleteMapping("/DeleteContact/{idContact}")
     public void deleteType(@PathVariable("idContact") Long idContact) {
         contact.delete(idContact);
     }
 
 
     @PutMapping("/Update/{idContact}")
-    public  ContactDTO UpdateType(@PathVariable("idContact") Long idContact, @RequestBody ContactDTO contactDTO){
+    public  ContactDTO UpdateType(@PathVariable Long idContact, @RequestBody ContactDTO contactDTO){
         return contact.Update(idContact,contactDTO);
     }
 
