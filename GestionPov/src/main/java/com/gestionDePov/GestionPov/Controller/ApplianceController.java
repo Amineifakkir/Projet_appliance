@@ -21,10 +21,12 @@ public class ApplianceController {
     public ApplianceDTO getAppliances(@RequestBody ApplianceDTO appliances) {
         return appliance.save(appliances);
     }
+
     @GetMapping("/FindAppliance") //Get
     public List<ApplianceDTO> findAppliance() {
        return appliance.findAll();
     }
+
     @DeleteMapping("/DeleteType/{type}") //Delete
     public void deleteType(@PathVariable Long type) {
         appliance.delete(type);

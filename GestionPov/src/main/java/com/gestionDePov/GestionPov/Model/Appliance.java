@@ -21,7 +21,7 @@ public class Appliance {
     @JoinColumn(name = "idType")
     public Type idType; //FK_TYPE
     public String DBID;
-    public String Disponibilitte;
+    public boolean Disponibilitte;
     public String References;
 
 
