@@ -22,12 +22,12 @@ public class ApplianceController {
         return appliance.save(appliances);
     }
 
-    @GetMapping("/FindAppliance") //Get
+    @GetMapping("/Find") //Get
     public List<ApplianceDTO> findAppliance() {
        return appliance.findAll();
     }
 
-    @DeleteMapping("/DeleteType/{type}") //Delete
+    @DeleteMapping("/Delete/{type}") //Delete
     public void deleteType(@PathVariable Long type) {
         appliance.delete(type);
     }

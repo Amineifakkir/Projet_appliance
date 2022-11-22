@@ -18,15 +18,15 @@ public class PovController {
     private  PovService pov;
 
 
-    @PostMapping("/GetPov")
+    @PostMapping("/add")
     public POVDTO getPOV(@RequestBody POVDTO povdto) {
         return pov.save(povdto);
     }
-    @GetMapping("/FindPOV")
+    @GetMapping("/Find")
     public List<POVDTO> findPOV() {
         return pov.findAll();
     }
-    @DeleteMapping("/DeletePov/{idPov}")
+    @DeleteMapping("/Delete/{idPov}")
     public void deletePov(@PathVariable("idPov") Long idPov) {
         pov.delete(idPov);
     }

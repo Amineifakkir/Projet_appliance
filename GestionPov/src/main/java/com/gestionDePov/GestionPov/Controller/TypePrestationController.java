@@ -10,29 +10,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/TypePrestation")
 public class TypePrestationController {
 @Autowired
     private TypePrestationService typePrestation;
 
 
-    @GetMapping("/findAllType")
+    @GetMapping("/Find")
     public List<TypePrestationDTO> registerNewStudent(){
 
         return typePrestation.findAlltype();
 
     }
-    @PostMapping("/AddType")
+    @PostMapping("/add")
     public TypePrestationDTO getType(@RequestBody TypePrestationDTO type) {
         return typePrestation.save(type);
     }
 
-    @DeleteMapping("/DeleteType/{type}")
+    @DeleteMapping("/Delete/{type}")
     public void deleteType(@PathVariable("type") Long type) {
         typePrestation.delete(type);
     }
 
-    @PutMapping("/Update")
+    @PutMapping("/Update/{type}")
     public TypePrestationDTO UpdateType(@PathVariable("type") Long type,@RequestBody TypePrestationDTO typePrestationDTO){
     return typePrestation.Update(type,typePrestationDTO);
     }

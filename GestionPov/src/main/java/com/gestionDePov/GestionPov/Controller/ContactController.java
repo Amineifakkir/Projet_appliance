@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/Contact")
 public class ContactController {
     @Autowired
@@ -22,11 +23,11 @@ public class ContactController {
     public ContactDTO getContact(@RequestBody ContactDTO contactDTO) {
         return contact.save(contactDTO);
     }
-    @GetMapping("/FindContact")
+    @GetMapping("/Find")
     public List<ContactDTO> findContact() {
         return contact.findAll();
     }
-    @DeleteMapping("/DeleteContact/{idContact}")
+    @DeleteMapping("/Delete/{idContact}")
     public void deleteType(@PathVariable("idContact") Long idContact) {
         contact.delete(idContact);
     }

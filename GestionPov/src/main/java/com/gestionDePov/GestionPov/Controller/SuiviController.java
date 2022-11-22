@@ -13,21 +13,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/Suivi")
 public class SuiviController {
 @Autowired
     private  SuiviService suivi;
 
 
-    @PostMapping("/GetSuivi")
+    @PostMapping("/add")
     public SuiviDTO getSuivi(@RequestBody SuiviDTO suiviDTO) {
         return suivi.save(suiviDTO);
     }
-    @GetMapping("/FindSuivi")
+    @GetMapping("/Find")
     public List<SuiviDTO> findSuivi() {
         return suivi.findAll();
     }
-    @DeleteMapping("/DeleteType/{idSuivi}")
+    @DeleteMapping("/Delete/{idSuivi}")
     public void deleteSuivi(@PathVariable("idSuivi") Long idSuivi) {
         suivi.delete(idSuivi
         );

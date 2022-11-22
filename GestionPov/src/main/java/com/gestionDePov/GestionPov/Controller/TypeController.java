@@ -16,18 +16,18 @@ public class TypeController {
 @Autowired
     private  TypeService typeService;
 
-    @GetMapping("/find")
+    @GetMapping("/Find")
     public List<TypeDTO> registerNewStudent(){
 
         return typeService.findAllType();
 
     }
 
-    @PostMapping("/addType")
+    @PostMapping("/add")
     public TypeDTO getType(@RequestBody TypeDTO type) {
         return typeService.save(type);
     }
-    @DeleteMapping("/DeleteType/{type}")
+    @DeleteMapping("/Delete/{type}")
     public void deleteType(@PathVariable("type") Long type) {
         typeService.delete(type);
     }

@@ -21,11 +21,11 @@ public class ClientController {
     public ClientDTO getClient(@RequestBody ClientDTO clientDTO) {
         return client.save(clientDTO);
     }
-    @GetMapping("/FindClient")
+    @GetMapping("/Find")
     public List<ClientDTO> findClient() {
         return client.findAll();
     }
-    @DeleteMapping("/DeleteClient/{iClient}")
+    @DeleteMapping("/Delete/{iClient}")
     public void deleteClient(@PathVariable("idClient") Long idClient) {
         client.delete(idClient);
     }

@@ -13,21 +13,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/Seance")
 public class SeanceController {
 @Autowired
     private SeanceService seance;
 
 
-    @PostMapping("/GetSeance")
+    @PostMapping("/add")
     public SeanceDTO getSeance(@RequestBody SeanceDTO seanceDTO) {
         return seance.save(seanceDTO);
     }
-    @GetMapping("/FindPOV")
+    @GetMapping("/Find")
     public List<SeanceDTO> findSeance() {
         return seance.findAll();
     }
-    @DeleteMapping("/DeleteType/{idSeance}")
+    @DeleteMapping("/Delete/{idSeance}")
     public void deleteSeance(@PathVariable("idSeance") Long idSeance) {
         seance.delete(idSeance);
     }
