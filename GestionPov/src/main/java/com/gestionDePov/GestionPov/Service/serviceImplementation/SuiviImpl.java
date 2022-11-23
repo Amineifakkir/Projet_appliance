@@ -39,7 +39,7 @@ public class SuiviImpl implements SuiviService {
 
     @Override
     public List<SuiviDTO> findAll() {
-        return suiviMapper.ListEntitySuiviToEntitySuivi(suiviRepo.findAll());
+        return suiviMapper.ListEntitySuiviToDtoSuivi(suiviRepo.findAll());
 
     }
 

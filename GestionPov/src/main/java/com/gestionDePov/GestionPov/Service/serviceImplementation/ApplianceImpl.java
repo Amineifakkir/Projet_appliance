@@ -40,7 +40,7 @@ public class ApplianceImpl implements ApplianceService {
 
     @Override
     public List<ApplianceDTO> findAll() {
-        return applianceMapper.ListEntityApplianceToEntityAppliance(applianceRepo.findAll());
+        return applianceMapper.ListEntityApplianceToDtoAppliance(applianceRepo.findAll());
     }
 
     @Override

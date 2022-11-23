@@ -39,7 +39,7 @@ public class ClientImpl implements ClientService{
 
     @Override
     public List<ClientDTO> findAll() {
-        return clientMapper.ListEntityClientToEntityClient(clientRepo.findAll());
+        return clientMapper.ListEntityClientToDtoClient(clientRepo.findAll());
     }
 
     @Override

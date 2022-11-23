@@ -51,7 +51,7 @@ public class ContactMapper {
 
 
 //    //List Entity To List DTO
-        public List<Contact> ListEntityContactToEntityContact (List < ContactDTO > contactDTOS) {
+        public List<Contact> ListEntityContactToDtoContact (List < ContactDTO > contactDTOS) {
 
             List<Contact> LstContact = new ArrayList<>();
             contactDTOS.forEach(Contact -> LstContact.add(ContactDTOToContact(Contact)));

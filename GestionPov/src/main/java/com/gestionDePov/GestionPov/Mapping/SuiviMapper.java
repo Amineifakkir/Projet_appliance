@@ -46,7 +46,7 @@ public class SuiviMapper {
     }
 
     //List Entity To List DTO
-    public List<SuiviDTO> ListEntitySuiviToEntitySuivi(List<Suivi> suivi){
+    public List<SuiviDTO> ListEntitySuiviToDtoSuivi(List<Suivi> suivi){
 
         List<SuiviDTO> suiviDTOS = new ArrayList<>();
         suivi.forEach(Suivi -> suiviDTOS.add(SuiviToSuiviDTO(Suivi)));

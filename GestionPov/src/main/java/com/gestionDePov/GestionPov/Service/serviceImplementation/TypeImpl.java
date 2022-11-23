@@ -42,7 +42,7 @@ public class TypeImpl implements TypeService {
     @Override
     public List<TypeDTO> findAllType() {
 
-        return typeMapper.ListEntityTypeToEntityType(typeRepo.findAll());
+        return typeMapper.ListEntityTypeToListType(typeRepo.findAll());
 
     }
 

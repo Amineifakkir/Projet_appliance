@@ -15,14 +15,11 @@ import java.util.List;
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     public Long idType;
     public  String Libelle;
 
 
     @OneToMany(mappedBy = "idType" ,fetch = FetchType.LAZY)
     public List<Appliance> appliances;
-
-
 
 }

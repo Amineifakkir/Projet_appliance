@@ -17,7 +17,7 @@ public class ApplianceController {
         private  ApplianceService appliance;
 
 
-    @PostMapping("/add")
+    @PostMapping("/add") //add
     public ApplianceDTO getAppliances(@RequestBody ApplianceDTO appliances) {
         return appliance.save(appliances);
     }

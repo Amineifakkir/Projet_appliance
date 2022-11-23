@@ -50,7 +50,7 @@ public class SeanceMapper {
 
 
 //List Entity To List DTO
-    public List<Seance> ListEntitySeanceToEntitySeance (List <SeanceDTO> seanceDTOS) {
+    public List<Seance> ListEntitySeanceToDtoSeance (List <SeanceDTO> seanceDTOS) {
 
         List<Seance> seances = new ArrayList<>();
         seanceDTOS.forEach(Seance -> seances.add(SeanceDtoToSeance(Seance)));

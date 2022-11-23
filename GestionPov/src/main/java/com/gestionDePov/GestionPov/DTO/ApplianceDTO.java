@@ -17,7 +17,7 @@ public class ApplianceDTO {
     public  String Libelle;
     public TypeDTO idType; //FK_TYPE
     public String DBID;
-    public String Disponibilitte;
+    public Boolean Disponibilitte;
     public String References;
 
 

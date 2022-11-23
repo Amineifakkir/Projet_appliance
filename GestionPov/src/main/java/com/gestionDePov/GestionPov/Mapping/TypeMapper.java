@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class TypeMapper {
 
-    //Creation des Methodes
+
     @Autowired
     DozerBeanMapper dozerBeanMapper;
 
@@ -42,7 +42,7 @@ public class TypeMapper {
 
     //List Entity To List DTO
 
-    public List<TypeDTO> ListEntityTypeToEntityType(List<Type> type){
+    public List<TypeDTO> ListEntityTypeToListType(List<Type> type){
 
         List<TypeDTO> LstType = new ArrayList<>();
         type.forEach(Entitytype -> LstType.add(TypeToTypeDTO(Entitytype)));
