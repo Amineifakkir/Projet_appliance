@@ -1,8 +1,8 @@
 package com.gestionDePov.GestionPov.Mapping;
 
-import com.gestionDePov.GestionPov.DTO.ContactDTO;
+
 import com.gestionDePov.GestionPov.DTO.SeanceDTO;
-import com.gestionDePov.GestionPov.Model.Contact;
+
 import com.gestionDePov.GestionPov.Model.Seance;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +24,8 @@ public class SeanceMapper {
     public SeanceDTO SeanceToSeanceDTO(Seance seance){
         SeanceDTO seanceDTO = dozerBeanMapper.map(seance,SeanceDTO.class);
 
-        if(seanceDTO.getPov() != null){
-            seanceDTO.setPov(povMapper.PovToPovDTO(seance.getPov()));
+        if(seanceDTO.getPovSeance() != null){
+            seanceDTO.setPovSeance(povMapper.PovToPovDTO(seance.getPovSeance()));
         }
         return seanceDTO;
     }
@@ -33,8 +33,8 @@ public class SeanceMapper {
     public Seance SeanceDtoToSeance (SeanceDTO seancedto){
         Seance seance = dozerBeanMapper.map(seancedto,Seance.class);
 
-        if(seance.getPov() != null){
-            seance.setPov(povMapper.PovDtoToPov(seancedto.getPov()));
+        if(seance.getPovSeance() != null){
+            seance.setPovSeance(povMapper.PovDtoToPov(seancedto.getPovSeance()));
         }
         return seance;
     }

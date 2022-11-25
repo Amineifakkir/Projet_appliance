@@ -17,6 +17,6 @@ public class SeanceDTO {
     public Date DateSceance;
     public String Resumer;
     public String Participant;
-    public POVDTO pov;
+    public POVDTO povSeance;
 
 }

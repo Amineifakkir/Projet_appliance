@@ -1,5 +1,6 @@
 package com.gestionDePov.GestionPov.Mapping;
 
+import com.gestionDePov.GestionPov.DTO.POVDTO;
 import com.gestionDePov.GestionPov.DTO.SuiviDTO;
 import com.gestionDePov.GestionPov.Model.Suivi;
 import org.dozer.DozerBeanMapper;
@@ -16,13 +17,17 @@ public class SuiviMapper {
     @Autowired
     TypePrestationMapper typePrestationMapper;
 
+    @Autowired
+    PovMapper povMapper;
+
     //Entity To Dto
     public SuiviDTO SuiviToSuiviDTO(Suivi suivi){
 
         SuiviDTO suiviDTO = dozerBeanMapper.map(suivi,SuiviDTO.class);
 
-        if(suiviDTO.getTypePres()!= null ){
+        if(suiviDTO.getTypePres()!= null || suiviDTO.getPovSuivi()!= null ){
             suiviDTO.setTypePres(typePrestationMapper.TypeToTypeDTO(suivi.getTypePres()));
+            suiviDTO.setPovSuivi(povMapper.PovToPovDTO(suivi.getPovSuivi()));
         }
         return suiviDTO;
     }
@@ -30,8 +35,9 @@ public class SuiviMapper {
     public  Suivi SuiviDTOToSuivi( SuiviDTO  suiviDTO){
         Suivi suivi = dozerBeanMapper.map(suiviDTO, Suivi.class);
 
-        if(suivi.getTypePres()!= null){
+        if(suivi.getTypePres()!= null || suivi.getPovSuivi()!= null ){
             suivi.setTypePres(typePrestationMapper.TypeDTOToType(suiviDTO.getTypePres()));
+            suivi.setPovSuivi(povMapper.PovDtoToPov(suiviDTO.getPovSuivi()));
         }
         return suivi;
     }

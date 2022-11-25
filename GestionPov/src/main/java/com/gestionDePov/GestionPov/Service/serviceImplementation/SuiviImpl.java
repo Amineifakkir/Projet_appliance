@@ -1,13 +1,10 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
 import com.gestionDePov.GestionPov.DTO.SuiviDTO;
-import com.gestionDePov.GestionPov.DTO.TypeDTO;
 import com.gestionDePov.GestionPov.Mapping.SuiviMapper;
-import com.gestionDePov.GestionPov.Model.Suivi;
 import com.gestionDePov.GestionPov.Repository.SuiviRepo;
 import com.gestionDePov.GestionPov.Service.SuiviService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

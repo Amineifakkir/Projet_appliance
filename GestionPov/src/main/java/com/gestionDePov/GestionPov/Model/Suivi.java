@@ -29,6 +29,6 @@ public class Suivi {
     //idPov
     @ManyToOne
     @JoinColumn(name = "idPov")
-    public POV pov;
+    public POV povSuivi;
 
 }

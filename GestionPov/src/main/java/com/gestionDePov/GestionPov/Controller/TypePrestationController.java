@@ -1,7 +1,7 @@
 package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
-import com.gestionDePov.GestionPov.Model.TypePrestation;
+
 import com.gestionDePov.GestionPov.Service.TypePrestationService;
 
 import org.springframework.beans.factory.annotation.Autowired;

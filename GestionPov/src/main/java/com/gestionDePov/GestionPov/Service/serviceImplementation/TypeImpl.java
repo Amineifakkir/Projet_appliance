@@ -25,7 +25,7 @@ public class TypeImpl implements TypeService {
        );
 
     }
-//Deleting a existing Line In the database
+//Deleting an existing Line In the database
     @Override
     public void delete(Long idType) {
         boolean exists =typeRepo.existsById(idType);

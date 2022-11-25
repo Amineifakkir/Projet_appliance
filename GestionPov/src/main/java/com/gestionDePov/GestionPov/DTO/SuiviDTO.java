@@ -15,5 +15,6 @@ public class SuiviDTO {
     public Boolean OffreCommercial;
     public float   Montant;
     public TypePrestationDTO TypePres;
+    public POVDTO povSuivi;
     public String CompteRendu;
 }

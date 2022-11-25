@@ -2,7 +2,6 @@ package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
 import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 import com.gestionDePov.GestionPov.Mapping.TypePrestationMapper;
-import com.gestionDePov.GestionPov.Model.TypePrestation;
 import com.gestionDePov.GestionPov.Repository.TypePrestationRepo;
 import com.gestionDePov.GestionPov.Service.TypePrestationService;
 import org.springframework.beans.factory.annotation.Autowired;

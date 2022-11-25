@@ -36,7 +36,7 @@ public class ContactImpl implements ContactService {
 
     @Override
     public List<ContactDTO> findAll() {
-        return null;
+        return contactMapper.ListContactDTOToEntityContact(contactRepo.findAll());
     }
 
     @Override

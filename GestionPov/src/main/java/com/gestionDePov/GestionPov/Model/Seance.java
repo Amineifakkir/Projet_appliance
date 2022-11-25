@@ -23,5 +23,5 @@ public class Seance {
     //id_Pov
     @ManyToOne
     @JoinColumn(name = "idPov")
-    public POV pov;
+    public POV povSeance;
 }

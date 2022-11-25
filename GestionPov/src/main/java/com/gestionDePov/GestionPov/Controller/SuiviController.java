@@ -1,12 +1,10 @@
 package com.gestionDePov.GestionPov.Controller;
 
-import com.gestionDePov.GestionPov.DTO.SeanceDTO;
+
 import com.gestionDePov.GestionPov.DTO.SuiviDTO;
-import com.gestionDePov.GestionPov.Model.POV;
-import com.gestionDePov.GestionPov.Model.Suivi;
+
 import com.gestionDePov.GestionPov.Service.SuiviService;
-import com.gestionDePov.GestionPov.Service.serviceImplementation.PovImpl;
-import com.gestionDePov.GestionPov.Service.serviceImplementation.SuiviImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

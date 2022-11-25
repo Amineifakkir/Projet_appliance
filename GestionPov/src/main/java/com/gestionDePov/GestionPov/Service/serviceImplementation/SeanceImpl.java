@@ -2,7 +2,6 @@ package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
 import com.gestionDePov.GestionPov.DTO.SeanceDTO;
 import com.gestionDePov.GestionPov.Mapping.SeanceMapper;
-import com.gestionDePov.GestionPov.Model.Seance;
 import com.gestionDePov.GestionPov.Repository.SeanceRepo;
 import com.gestionDePov.GestionPov.Service.SeanceService;
 import org.springframework.beans.factory.annotation.Autowired;

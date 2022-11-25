@@ -4,7 +4,7 @@ import com.gestionDePov.GestionPov.DTO.TypeDTO;
 import com.gestionDePov.GestionPov.Model.Type;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

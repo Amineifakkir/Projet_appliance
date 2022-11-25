@@ -36,9 +36,9 @@ public class POV {
     public String Analyse_CyberSecurite;
     public String Libelle_Pov;
 
-    @OneToMany(mappedBy = "pov" )
+    @OneToMany(mappedBy = "povSuivi" )
     public List<Suivi> suivis;
 
-    @OneToMany(mappedBy = "pov" )
+    @OneToMany(mappedBy = "povSeance" )
     public List<Seance> seances;
 }

@@ -21,7 +21,7 @@ public class Client {
     public String Activite;
 
     @OneToMany(mappedBy = "idClient" )
-    public List<Contact> idClient;
+    public List<Contact> Contact;
 
     @OneToMany(mappedBy = "idClient" )
     public List<POV> POV;
