@@ -2,9 +2,11 @@ package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 
+import com.gestionDePov.GestionPov.DTO.TypePrestationPageDTO;
 import com.gestionDePov.GestionPov.Service.TypePrestationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +20,9 @@ public class TypePrestationController {
 
 
     @GetMapping("/Find")
-    public List<TypePrestationDTO> registerNewStudent(){
+    public TypePrestationPageDTO registerNewStudent(@RequestParam int page, @RequestParam int size){
 
-        return typePrestation.findAlltype();
+        return typePrestation.findAlltype(PageRequest.of(page, size));
 
     }
     @PostMapping("/add")

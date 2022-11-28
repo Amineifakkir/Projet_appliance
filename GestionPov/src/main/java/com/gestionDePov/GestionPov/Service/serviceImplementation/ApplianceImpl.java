@@ -2,10 +2,14 @@ package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
 
+import com.gestionDePov.GestionPov.DTO.AppliancePageDto;
 import com.gestionDePov.GestionPov.Mapping.ApplianceMapper;
+import com.gestionDePov.GestionPov.Model.Appliance;
 import com.gestionDePov.GestionPov.Repository.ApplianceRepo;
 import com.gestionDePov.GestionPov.Service.ApplianceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,8 +43,13 @@ public class ApplianceImpl implements ApplianceService {
     }
 
     @Override
-    public List<ApplianceDTO> findAll() {
-        return applianceMapper.ListEntityApplianceToDtoAppliance(applianceRepo.findAll());
+    public AppliancePageDto findAll(Pageable pageRequest) {
+        Page<Appliance> data = applianceRepo.findAll(pageRequest);
+        AppliancePageDto appliancePageDto = new AppliancePageDto();
+        appliancePageDto.setTotalItems(data.getTotalElements());
+        appliancePageDto.setPages(applianceMapper.ListEntityApplianceToDtoAppliance(data.getContent()));
+
+        return appliancePageDto;
     }
 
     @Override

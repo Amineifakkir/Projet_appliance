@@ -3,9 +3,11 @@ package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.SeanceDTO;
 
+import com.gestionDePov.GestionPov.DTO.SeancePageDTO;
 import com.gestionDePov.GestionPov.Service.SeanceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class SeanceController {
         return seance.save(seanceDTO);
     }
     @GetMapping("/Find")
-    public List<SeanceDTO> findSeance() {
-        return seance.findAll();
+    public SeancePageDTO findSeance(@RequestParam int page, @RequestParam int size) {
+        return seance.findAll(PageRequest.of(page, size));
     }
     @DeleteMapping("/Delete/{idSeance}")
     public void deleteSeance(@PathVariable("idSeance") Long idSeance) {

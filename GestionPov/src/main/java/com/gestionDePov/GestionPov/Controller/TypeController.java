@@ -2,8 +2,10 @@ package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.TypeDTO;
 
+import com.gestionDePov.GestionPov.DTO.TypePageDTO;
 import com.gestionDePov.GestionPov.Service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +19,9 @@ public class TypeController {
     private  TypeService typeService;
 
     @GetMapping("/Find")
-    public List<TypeDTO> registerNewStudent(){
+    public TypePageDTO registerNewStudent(@RequestParam int page, @RequestParam int size){
 
-        return typeService.findAllType();
+        return typeService.findAllType(PageRequest.of(page, size));
 
     }
 

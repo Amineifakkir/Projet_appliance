@@ -25,7 +25,7 @@ public class SuiviMapper {
 
         SuiviDTO suiviDTO = dozerBeanMapper.map(suivi,SuiviDTO.class);
 
-        if(suiviDTO.getTypePres()!= null || suiviDTO.getPovSuivi()!= null ){
+        if(suiviDTO.getTypePres()!= null && suiviDTO.getPovSuivi()!= null ){
             suiviDTO.setTypePres(typePrestationMapper.TypeToTypeDTO(suivi.getTypePres()));
             suiviDTO.setPovSuivi(povMapper.PovToPovDTO(suivi.getPovSuivi()));
         }
@@ -35,7 +35,7 @@ public class SuiviMapper {
     public  Suivi SuiviDTOToSuivi( SuiviDTO  suiviDTO){
         Suivi suivi = dozerBeanMapper.map(suiviDTO, Suivi.class);
 
-        if(suivi.getTypePres()!= null || suivi.getPovSuivi()!= null ){
+        if(suivi.getTypePres()!= null && suivi.getPovSuivi()!= null ){
             suivi.setTypePres(typePrestationMapper.TypeDTOToType(suiviDTO.getTypePres()));
             suivi.setPovSuivi(povMapper.PovDtoToPov(suiviDTO.getPovSuivi()));
         }

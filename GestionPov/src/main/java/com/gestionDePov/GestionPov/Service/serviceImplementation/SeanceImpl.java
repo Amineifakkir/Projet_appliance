@@ -1,10 +1,16 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
+import com.gestionDePov.GestionPov.DTO.PovPageDto;
 import com.gestionDePov.GestionPov.DTO.SeanceDTO;
+import com.gestionDePov.GestionPov.DTO.SeancePageDTO;
 import com.gestionDePov.GestionPov.Mapping.SeanceMapper;
+import com.gestionDePov.GestionPov.Model.POV;
+import com.gestionDePov.GestionPov.Model.Seance;
 import com.gestionDePov.GestionPov.Repository.SeanceRepo;
 import com.gestionDePov.GestionPov.Service.SeanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +40,13 @@ public class SeanceImpl implements SeanceService {
     }
 
     @Override
-    public List<SeanceDTO> findAll() {
-        return seanceMapper.ListSeanceDTOToEntitySeance(seanceRepo.findAll());
+    public SeancePageDTO findAll(Pageable pageRequest){
+        Page<Seance> data = seanceRepo.findAll(pageRequest);
+        SeancePageDTO seancePageDto = new SeancePageDTO();
+        seancePageDto.setTotalItems(data.getTotalElements());
+        seancePageDto.setPages(seanceMapper.ListSeanceDTOToEntitySeance(data.getContent()));
+
+        return seancePageDto;
     }
 
     @Override

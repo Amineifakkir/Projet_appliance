@@ -1,12 +1,18 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
 
+import com.gestionDePov.GestionPov.DTO.AppliancePageDto;
 import com.gestionDePov.GestionPov.DTO.ClientDTO;
+import com.gestionDePov.GestionPov.DTO.ClientPageDto;
 import com.gestionDePov.GestionPov.Mapping.ClientMapper;
 
+import com.gestionDePov.GestionPov.Model.Appliance;
+import com.gestionDePov.GestionPov.Model.Client;
 import com.gestionDePov.GestionPov.Repository.ClientRepo;
 import com.gestionDePov.GestionPov.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -38,8 +44,15 @@ public class ClientImpl implements ClientService{
     }
 
     @Override
-    public List<ClientDTO> findAll() {
-        return clientMapper.ListEntityClientToDtoClient(clientRepo.findAll());
+    public ClientPageDto findAll(Pageable pageRequest) {
+
+
+        Page<Client> data = clientRepo.findAll(pageRequest);
+        ClientPageDto clientPageDto = new ClientPageDto();
+        clientPageDto.setTotalItems(data.getTotalElements());
+        clientPageDto.setPages(clientMapper.ListEntityClientToDtoClient(data.getContent()));
+
+        return clientPageDto;
     }
 
     @Override

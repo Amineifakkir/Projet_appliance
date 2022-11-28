@@ -1,11 +1,17 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
+import com.gestionDePov.GestionPov.DTO.ClientPageDto;
 import com.gestionDePov.GestionPov.DTO.ContactDTO;
+import com.gestionDePov.GestionPov.DTO.ContactPageDto;
 import com.gestionDePov.GestionPov.Mapping.ContactMapper;
 
+import com.gestionDePov.GestionPov.Model.Client;
+import com.gestionDePov.GestionPov.Model.Contact;
 import com.gestionDePov.GestionPov.Repository.ContactRepo;
 import com.gestionDePov.GestionPov.Service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -35,8 +41,14 @@ public class ContactImpl implements ContactService {
     }
 
     @Override
-    public List<ContactDTO> findAll() {
-        return contactMapper.ListContactDTOToEntityContact(contactRepo.findAll());
+    public ContactPageDto findAll(Pageable pageRequest){
+
+        Page<Contact> data = contactRepo.findAll(pageRequest);
+        ContactPageDto contactPageDto = new ContactPageDto();
+        contactPageDto.setTotalItems(data.getTotalElements());
+        contactPageDto.setPages(contactMapper.ListContactDTOToEntityContact(data.getContent()));
+
+        return contactPageDto;
     }
 
     @Override

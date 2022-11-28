@@ -1,10 +1,16 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
+import com.gestionDePov.GestionPov.DTO.TypePageDTO;
 import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
+import com.gestionDePov.GestionPov.DTO.TypePrestationPageDTO;
 import com.gestionDePov.GestionPov.Mapping.TypePrestationMapper;
+import com.gestionDePov.GestionPov.Model.Type;
+import com.gestionDePov.GestionPov.Model.TypePrestation;
 import com.gestionDePov.GestionPov.Repository.TypePrestationRepo;
 import com.gestionDePov.GestionPov.Service.TypePrestationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,10 +40,15 @@ public class TypePrestationImpl implements TypePrestationService {
     }
 
     @Override
-    public List<TypePrestationDTO> findAlltype() {
+    public TypePrestationPageDTO findAlltype(Pageable pageRequest) {
 
-        return typePrestationMapper.ListEntityTypePrestationToDTOTypePrestation(typePrestationRepo.findAll());
-    }
+
+        Page<TypePrestation> data =  typePrestationRepo.findAll(pageRequest);
+        TypePrestationPageDTO typePrestationPageDto = new  TypePrestationPageDTO();
+        typePrestationPageDto.setTotalItems(data.getTotalElements());
+        typePrestationPageDto.setPages(typePrestationMapper.ListTypeDTOToEntityType(data.getContent()));
+
+        return typePrestationPageDto;    }
 
     @Override
     public TypePrestationDTO Update(Long type, TypePrestationDTO typeDTO) {

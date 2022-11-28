@@ -3,9 +3,11 @@ package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.POVDTO;
 
+import com.gestionDePov.GestionPov.DTO.PovPageDto;
 import com.gestionDePov.GestionPov.Service.PovService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class PovController {
         return pov.save(povdto);
     }
     @GetMapping("/Find")
-    public List<POVDTO> findPOV() {
-        return pov.findAll();
+    public PovPageDto findPOV(@RequestParam int page, @RequestParam int size) {
+        return pov.findAll(PageRequest.of(page, size));
     }
     @DeleteMapping("/Delete/{idPov}")
     public void deletePov(@PathVariable("idPov") Long idPov) {

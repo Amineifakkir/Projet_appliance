@@ -1,11 +1,17 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
+import com.gestionDePov.GestionPov.DTO.ContactPageDto;
 import com.gestionDePov.GestionPov.DTO.POVDTO;
+import com.gestionDePov.GestionPov.DTO.PovPageDto;
 import com.gestionDePov.GestionPov.Mapping.PovMapper;
 
+import com.gestionDePov.GestionPov.Model.Contact;
+import com.gestionDePov.GestionPov.Model.POV;
 import com.gestionDePov.GestionPov.Repository.PovRepo;
 import com.gestionDePov.GestionPov.Service.PovService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,8 +42,13 @@ PovMapper povMapper;
     }
 
     @Override
-    public List<POVDTO> findAll() {
-        return povMapper.ListPovToPovDto(povRepo.findAll());
+    public PovPageDto findAll(Pageable pageRequest) {
+        Page<POV> data = povRepo.findAll(pageRequest);
+        PovPageDto povPageDto = new PovPageDto();
+        povPageDto.setTotalItems(data.getTotalElements());
+        povPageDto.setPages(povMapper.ListPovToPovDto(data.getContent()));
+
+        return povPageDto;
     }
 
     @Override

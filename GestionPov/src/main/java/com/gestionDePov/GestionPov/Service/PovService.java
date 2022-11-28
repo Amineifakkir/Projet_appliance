@@ -2,6 +2,8 @@ package com.gestionDePov.GestionPov.Service;
 
 import com.gestionDePov.GestionPov.DTO.POVDTO;
 
+import com.gestionDePov.GestionPov.DTO.PovPageDto;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -11,7 +13,7 @@ public interface PovService {
     POVDTO save(POVDTO pov);
     void delete(Long Pov);
 
-    List<POVDTO> findAll();
+    PovPageDto findAll(Pageable pageRequest);
 
     POVDTO Update(Long idPov, POVDTO povDTO);
 

@@ -3,9 +3,11 @@ package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.SuiviDTO;
 
+import com.gestionDePov.GestionPov.DTO.SuiviPageDTO;
 import com.gestionDePov.GestionPov.Service.SuiviService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class SuiviController {
         return suivi.save(suiviDTO);
     }
     @GetMapping("/Find")
-    public List<SuiviDTO> findSuivi() {
-        return suivi.findAll();
+    public SuiviPageDTO findSuivi(@RequestParam int page, @RequestParam int size) {
+        return suivi.findAll(PageRequest.of(page, size));
     }
     @DeleteMapping("/Delete/{idSuivi}")
     public void deleteSuivi(@PathVariable("idSuivi") Long idSuivi) {

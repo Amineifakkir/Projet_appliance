@@ -1,6 +1,8 @@
 package com.gestionDePov.GestionPov.Service;
 
 import com.gestionDePov.GestionPov.DTO.TypeDTO;
+import com.gestionDePov.GestionPov.DTO.TypePageDTO;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -11,7 +13,7 @@ public interface TypeService {
     TypeDTO save(TypeDTO typeDTO);  //Post
     void delete(Long type);  //Delete
 
-    List<TypeDTO> findAllType(); //Get
+    TypePageDTO findAllType(Pageable pageRequest); //Get
 
     TypeDTO Update(Long type,TypeDTO typeDTO); //Put
 }

@@ -2,6 +2,8 @@ package com.gestionDePov.GestionPov.Service;
 
 import com.gestionDePov.GestionPov.DTO.SuiviDTO;
 
+import com.gestionDePov.GestionPov.DTO.SuiviPageDTO;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -13,7 +15,7 @@ public interface SuiviService {
 
     void delete(Long suivi);
 
-    List<SuiviDTO> findAll();
+   SuiviPageDTO findAll(Pageable pageRequest);
 
     SuiviDTO Update(Long type, SuiviDTO suiviDTO);
 }

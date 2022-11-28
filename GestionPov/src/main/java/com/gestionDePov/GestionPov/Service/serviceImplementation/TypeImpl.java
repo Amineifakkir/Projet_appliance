@@ -1,10 +1,16 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
+import com.gestionDePov.GestionPov.DTO.SuiviPageDTO;
 import com.gestionDePov.GestionPov.DTO.TypeDTO;
+import com.gestionDePov.GestionPov.DTO.TypePageDTO;
 import com.gestionDePov.GestionPov.Mapping.TypeMapper;
+import com.gestionDePov.GestionPov.Model.Suivi;
+import com.gestionDePov.GestionPov.Model.Type;
 import com.gestionDePov.GestionPov.Repository.TypeRepo;
 import com.gestionDePov.GestionPov.Service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,9 +46,14 @@ public class TypeImpl implements TypeService {
     }
 
     @Override
-    public List<TypeDTO> findAllType() {
+    public TypePageDTO findAllType(Pageable pageRequest){
 
-        return typeMapper.ListEntityTypeToListType(typeRepo.findAll());
+        Page<Type> data =  typeRepo.findAll(pageRequest);
+        TypePageDTO typePageDto = new  TypePageDTO();
+        typePageDto.setTotalItems(data.getTotalElements());
+        typePageDto.setPages(typeMapper.ListEntityTypeToListType(data.getContent()));
+
+        return typePageDto;
 
     }
 

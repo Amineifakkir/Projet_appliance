@@ -2,9 +2,11 @@ package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
 
+import com.gestionDePov.GestionPov.DTO.AppliancePageDto;
 import com.gestionDePov.GestionPov.Service.ApplianceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +25,9 @@ public class ApplianceController {
     }
 
     @GetMapping("/Find") //Get
-    public List<ApplianceDTO> findAppliance() {
-       return appliance.findAll();
+    public AppliancePageDto findAppliance(@RequestParam int page, @RequestParam int size) {
+
+        return appliance.findAll(PageRequest.of(page, size));
     }
 
     @DeleteMapping("/Delete/{type}") //Delete

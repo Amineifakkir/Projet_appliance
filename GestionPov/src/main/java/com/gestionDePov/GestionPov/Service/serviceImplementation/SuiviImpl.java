@@ -1,10 +1,16 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
+import com.gestionDePov.GestionPov.DTO.SeancePageDTO;
 import com.gestionDePov.GestionPov.DTO.SuiviDTO;
+import com.gestionDePov.GestionPov.DTO.SuiviPageDTO;
 import com.gestionDePov.GestionPov.Mapping.SuiviMapper;
+import com.gestionDePov.GestionPov.Model.Seance;
+import com.gestionDePov.GestionPov.Model.Suivi;
 import com.gestionDePov.GestionPov.Repository.SuiviRepo;
 import com.gestionDePov.GestionPov.Service.SuiviService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,8 +41,13 @@ public class SuiviImpl implements SuiviService {
     }
 
     @Override
-    public List<SuiviDTO> findAll() {
-        return suiviMapper.ListEntitySuiviToDtoSuivi(suiviRepo.findAll());
+    public SuiviPageDTO findAll(Pageable pageRequest) {
+        Page<Suivi> data =  suiviRepo.findAll(pageRequest);
+        SuiviPageDTO suiviPageDto = new  SuiviPageDTO();
+        suiviPageDto.setTotalItems(data.getTotalElements());
+        suiviPageDto.setPages(suiviMapper.ListEntitySuiviToDtoSuivi(data.getContent()));
+
+        return suiviPageDto;
 
     }
 
