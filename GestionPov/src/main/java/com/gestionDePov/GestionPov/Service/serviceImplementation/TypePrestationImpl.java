@@ -1,10 +1,10 @@
 package com.gestionDePov.GestionPov.Service.serviceImplementation;
 
-import com.gestionDePov.GestionPov.DTO.TypePageDTO;
+
 import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 import com.gestionDePov.GestionPov.DTO.TypePrestationPageDTO;
 import com.gestionDePov.GestionPov.Mapping.TypePrestationMapper;
-import com.gestionDePov.GestionPov.Model.Type;
+
 import com.gestionDePov.GestionPov.Model.TypePrestation;
 import com.gestionDePov.GestionPov.Repository.TypePrestationRepo;
 import com.gestionDePov.GestionPov.Service.TypePrestationService;
@@ -13,8 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Service
 public class TypePrestationImpl implements TypePrestationService {
