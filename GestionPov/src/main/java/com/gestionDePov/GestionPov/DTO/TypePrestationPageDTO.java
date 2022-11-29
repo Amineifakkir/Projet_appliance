@@ -3,14 +3,14 @@ package com.gestionDePov.GestionPov.DTO;
 import java.util.List;
 
 public class TypePrestationPageDTO {
-    List<TypePageDTO> pages;
+    List<TypePrestationDTO> pages;
     long totalItems;
 
-    public List<TypePageDTO> getPages() {
+    public List<TypePrestationDTO> getPages() {
         return pages;
     }
 
-    public void setPages(List<TypePageDTO> pages) {
+    public void setPages(List<TypePrestationDTO> pages) {
         this.pages = pages;
     }
 

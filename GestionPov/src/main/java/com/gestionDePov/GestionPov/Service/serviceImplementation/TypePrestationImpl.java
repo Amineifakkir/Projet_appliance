@@ -45,7 +45,7 @@ public class TypePrestationImpl implements TypePrestationService {
         Page<TypePrestation> data =  typePrestationRepo.findAll(pageRequest);
         TypePrestationPageDTO typePrestationPageDto = new  TypePrestationPageDTO();
         typePrestationPageDto.setTotalItems(data.getTotalElements());
-        typePrestationPageDto.setPages(typePrestationMapper.ListTypeDTOToEntityType(data.getContent()));
+        typePrestationPageDto.setPages(typePrestationMapper.ListEntityTypePrestationToDTOTypePrestation(data.getContent()));
 
         return typePrestationPageDto;    }
 
