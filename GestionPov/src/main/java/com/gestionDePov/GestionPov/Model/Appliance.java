@@ -24,13 +24,8 @@ public class Appliance {
     public boolean Disponibilitte;
     public String References;
 
-
-
-
-
-
-    @OneToMany(mappedBy = "idAppliance" )
-    public List<POV> POV;
+@OneToMany(mappedBy = "idAppliance" ,cascade = CascadeType.REMOVE, orphanRemoval = true )
+    public List<POV> POV; //Fk in table POV
 
 
 

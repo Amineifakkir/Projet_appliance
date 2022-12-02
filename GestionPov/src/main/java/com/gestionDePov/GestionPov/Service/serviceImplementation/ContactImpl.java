@@ -40,6 +40,7 @@ public class ContactImpl implements ContactService {
 
     }
 
+
     @Override
     public ContactPageDto findAll(Pageable pageRequest){
 
@@ -49,6 +50,11 @@ public class ContactImpl implements ContactService {
         contactPageDto.setPages(contactMapper.ListContactDTOToEntityContact(data.getContent()));
 
         return contactPageDto;
+    }
+
+    @Override
+    public List<ContactDTO> findAll() {
+        return contactMapper.ListContactDTOToEntityContact(contactRepo.findAll());
     }
 
     @Override

@@ -50,6 +50,11 @@ public class SeanceImpl implements SeanceService {
     }
 
     @Override
+    public List<SeanceDTO> findAll() {
+        return seanceMapper.ListSeanceDTOToEntitySeance(seanceRepo.findAll());
+    }
+
+    @Override
     public SeanceDTO Update(Long idSeance, SeanceDTO seanceDTO) {
         boolean exists =seanceRepo.existsById(idSeance);
         if (exists){

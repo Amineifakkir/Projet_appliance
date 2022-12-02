@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -48,6 +49,11 @@ public class TypePrestationImpl implements TypePrestationService {
         typePrestationPageDto.setPages(typePrestationMapper.ListEntityTypePrestationToDTOTypePrestation(data.getContent()));
 
         return typePrestationPageDto;    }
+
+    @Override
+    public List<TypePrestationDTO> findAll() {
+        return typePrestationMapper.ListEntityTypePrestationToDTOTypePrestation(typePrestationRepo.findAll());
+    }
 
     @Override
     public TypePrestationDTO Update(Long type, TypePrestationDTO typeDTO) {

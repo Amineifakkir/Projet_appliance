@@ -3,6 +3,7 @@ package com.gestionDePov.GestionPov.Service;
 import com.gestionDePov.GestionPov.DTO.SeanceDTO;
 
 import com.gestionDePov.GestionPov.DTO.SeancePageDTO;
+import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,6 @@ public interface SeanceService {
 
     SeancePageDTO findAll(Pageable pageRequest);
 
+    List<SeanceDTO> findAll();
     SeanceDTO Update(Long idSeance, SeanceDTO typeDTO);
 }

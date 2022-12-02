@@ -14,6 +14,7 @@ public interface TypeService {
     void delete(Long type);  //Delete
 
     TypePageDTO findAllType(Pageable pageRequest); //Get
+    List<TypeDTO> findAll();
 
     TypeDTO Update(Long type,TypeDTO typeDTO); //Put
 }

@@ -33,13 +33,13 @@ public class ClientImpl implements ClientService{
     }
 
     @Override
-    public void delete(Long client) {
-        boolean exists =clientRepo.existsById(client);
+    public void delete(Long idClt) {
+        boolean exists =clientRepo.existsById(idClt);
         if (!exists){
             throw new IllegalStateException(
-                    "Type with id "+client+" does not exists");
+                    "Type with id "+idClt+" does not exists");
         }
-        clientRepo.deleteById(client);
+        clientRepo.deleteById(idClt);
 
     }
 
@@ -53,6 +53,11 @@ public class ClientImpl implements ClientService{
         clientPageDto.setPages(clientMapper.ListEntityClientToDtoClient(data.getContent()));
 
         return clientPageDto;
+    }
+
+    @Override
+    public List<ClientDTO> findAll() {
+        return clientMapper.ListEntityClientToDtoClient(clientRepo.findAll());
     }
 
     @Override

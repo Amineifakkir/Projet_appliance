@@ -52,6 +52,11 @@ public class SuiviImpl implements SuiviService {
     }
 
     @Override
+    public List<SuiviDTO> findAll() {
+        return suiviMapper.ListEntitySuiviToDtoSuivi(suiviRepo.findAll());
+    }
+
+    @Override
     public SuiviDTO Update(Long type, SuiviDTO suiviDTO) {
         boolean exists =suiviRepo.existsById(type);
         if (exists){

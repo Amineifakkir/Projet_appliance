@@ -3,6 +3,7 @@ package com.gestionDePov.GestionPov.Service.serviceImplementation;
 import com.gestionDePov.GestionPov.DTO.ContactPageDto;
 import com.gestionDePov.GestionPov.DTO.POVDTO;
 import com.gestionDePov.GestionPov.DTO.PovPageDto;
+import com.gestionDePov.GestionPov.DTO.SeanceDTO;
 import com.gestionDePov.GestionPov.Mapping.PovMapper;
 
 import com.gestionDePov.GestionPov.Model.Contact;
@@ -52,6 +53,11 @@ PovMapper povMapper;
     }
 
     @Override
+    public List<POVDTO> findAll() {
+        return povMapper.ListPovToPovDto(povRepo.findAll());
+    }
+
+    @Override
     public POVDTO Update(Long idPov, POVDTO povDTO) {
         boolean exists =povRepo.existsById(idPov);
         if (exists){
@@ -62,6 +68,10 @@ PovMapper povMapper;
 
         return povDTO;
     }
+
+
+
+
 
 }
 

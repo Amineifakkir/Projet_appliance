@@ -16,7 +16,7 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idType;
-    public  String Libelle;
+    public  String libelle;
 
 
     @OneToMany(mappedBy = "idType" ,fetch = FetchType.LAZY)

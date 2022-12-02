@@ -15,7 +15,7 @@ public class Suivi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idSuivi;
-    public Boolean OffreCommercial;
+    public boolean OffreCommercial;
     public float   Montant;
 
     //idTypePres

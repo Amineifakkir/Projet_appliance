@@ -20,9 +20,9 @@ public class Client {
     public  String Secteur;
     public String Activite;
 
-    @OneToMany(mappedBy = "idClient" )
+    @OneToMany(mappedBy = "idClient" , cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Contact> Contact;
 
-    @OneToMany(mappedBy = "idClient" )
+    @OneToMany(mappedBy = "idClient", cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<POV> POV;
 }
