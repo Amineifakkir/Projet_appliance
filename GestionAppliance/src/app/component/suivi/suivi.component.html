@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Bootstrap Table with Add and Delete Row Feature</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="suivi.component.css">
+</head>
+
+
+
+<body>
+    <div class="container-lg">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-8"><h2>Suivis <b>Details</b></h2></div>
+                        <div  class="col-sm-12">
+                        <form (submit)="persistSuivi(f)" #f=ngForm >
+                                <pre>
+                                    
+                            offreComercial              :   <input type="checkbox" [(ngModel)]="Mysuivi.offreCommercial" name="OffreCommercial">
+    
+                            montant                     :   <input [(ngModel)]="Mysuivi.montant" name="Montant">
+                            
+                            compteRendu                 :   <input [(ngModel)]="Mysuivi.compteRendu" name="CompteRendu">
+                            
+                            pov                         :   <select name="povSuivi" [(ngModel)]="Mysuivi.povSuivi" >
+                                <option  *ngFor="let pov of povs" [ngValue]="pov">{{pov.idPov}}</option>
+                            </select>
+    
+                            typePrestation              :   <select name="TypePres" [(ngModel)]="Mysuivi.typePres" >
+                                <option *ngFor="let typePrestation of typePrestations" [ngValue]="typePrestation">{{typePrestation.idTypePres}}</option>
+                            </select>
+                            
+                            <button *ngIf="!editForm" type="submit" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                            <button *ngIf="editForm" (click)="updateSuivi()" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> update</button>
+                        </pre>   
+                                                                     
+                    </form>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th>idSuivi</th>
+                        <th>offreComercial</th>
+                        <th>montant</th>
+                        <th>Pov</th>
+                        <th>typePrestation</th>
+                        <th>Action</th>
+                        
+                    
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let suivi of suivis | paginate: {
+                            itemsPerPage: itemsPerPage,
+                            currentPage:currentPage ,
+                            totalItems: totalItems }">
+                            <td>{{suivi.idSuivi}}</td>
+                            <td>{{suivi.offreCommercial}}</td> 
+                            <td>{{suivi.montant}}</td>
+                            <td>{{suivi.povSuivi.idPov}}</td> 
+                            <td>{{suivi.typePres.idTypePres}}</td> 
+                            <td>
+                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                <a  (click)="editSuivi(suivi)" class="edit" title="Edit" data-toggle="tooltip"><i   class="material-icons">&#xE254;</i></a>
+                                <a  (click)="deleteSuivi(suivi.idSuivi)" class="delete" title="Delete" ><i  class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                     
+                    </tbody>
+                </table>
+                <pagination-controls
+                      (pageChange)="pageChanged($event)"
+                       [autoHide]=true
+                      [responsive]=true
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                     >
+</pagination-controls>
+            </div>
+        </div>
+    </div>   
+</body>
+</html>
+
+
