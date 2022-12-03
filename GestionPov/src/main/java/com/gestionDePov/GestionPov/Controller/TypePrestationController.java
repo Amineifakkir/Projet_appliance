@@ -68,20 +68,20 @@ public class TypePrestationController {
 
 
         JasperReport compileReport = JasperCompileManager
-                .compileReport(new FileInputStream("src/main/resources/Jasper/Type.jrxml"));
+                .compileReport(new FileInputStream("src/main/resources/Jasper/TypePrestation.jrxml"));
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, parameters,beanCollectionDataSource);
 
 
         JasperExportManager.exportReportToPdfFile(jasperPrint,
-                "Type.pdf");
+                "TypePrestation.pdf");
 
         byte[] data = JasperExportManager.exportReportToPdf(jasperPrint);
 
         System.err.println(data);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=Type.pdf");
+        headers.add("Content-Disposition", "inline; filename=TypePrestation.pdf");
 
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
     }
