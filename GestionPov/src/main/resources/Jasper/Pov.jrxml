@@ -4,6 +4,14 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
+	<field name="idAppliance" class="java.lang.Long"/>
+	<field name="date_debut" class="java.sql.Date"/>
+	<field name="date_fin" class="java.sql.Date"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="comptemanager" class="java.lang.String"/>
+	<field name="ingenieur_cybersecurite" class="java.lang.String"/>
+	<field name="analyse_cybersecurite" class="java.lang.String"/>
+	<field name="libelle_pov" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>
@@ -16,14 +24,7 @@
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[TITLE]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="9f1d3a8c-b2c9-4f69-b520-c94d11587a70"/>
-					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Add a description here]]></text>
+					<text><![CDATA[POV]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -32,10 +33,74 @@
 		<band height="13"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="21">
+		<band height="75">
 			<line>
 				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="653dedcb-14ff-45a1-a203-92059fc4a091"/>
 			</line>
+			<staticText>
+				<reportElement x="-20" y="0" width="80" height="30" uuid="10b795c2-1255-444a-8656-cc5ea792f18c"/>
+				<text><![CDATA[idAppliance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="70" height="30" uuid="e56db5ff-2461-4fc2-b437-e3a236e0b2ee"/>
+				<text><![CDATA[DateDebut]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="70" height="30" uuid="6e50d3bc-126a-4a17-bc8b-b55290dd4ae3"/>
+				<text><![CDATA[DateFin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="0" width="70" height="30" uuid="ff77822f-b0e7-4793-abeb-99c67a2dc043"/>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="70" height="30" uuid="9149ea8d-e8ad-4521-84f0-f77f11883aac"/>
+				<text><![CDATA[CompteManager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="70" height="30" uuid="ef4f0fe3-a14f-454d-8b28-5a54ddee954a"/>
+				<text><![CDATA[Inenieur Cyber Securite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="70" height="30" uuid="6f7f7e3f-9433-4577-af05-20f443a6fd93"/>
+				<text><![CDATA[Analyse_CyberSecurite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="0" width="74" height="30" uuid="522d1de2-b773-458a-a6fb-2a1410e147a3"/>
+				<text><![CDATA[Libelle_Pov]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-20" y="40" width="70" height="30" uuid="eca94e43-8b1f-4034-874a-e942350e3726"/>
+				<textFieldExpression><![CDATA[$F{idAppliance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="40" width="70" height="30" uuid="f702a952-d164-4e93-97c1-749f7a33e7bb"/>
+				<textFieldExpression><![CDATA[$F{date_debut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="40" width="70" height="30" uuid="b8d5187d-ee40-455e-9891-765db059aab9"/>
+				<textFieldExpression><![CDATA[$F{date_fin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="40" width="70" height="30" uuid="1a6c134c-0f32-4d58-b123-b03b2af82e10"/>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="40" width="70" height="30" uuid="80661de7-bfb5-47ce-a2cb-26bc970ea04d"/>
+				<textFieldExpression><![CDATA[$F{comptemanager}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="40" width="70" height="30" uuid="6713cbf7-b614-48da-a949-7b61fffdf489"/>
+				<textFieldExpression><![CDATA[$F{ingenieur_cybersecurite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="40" width="70" height="30" uuid="e804064d-5a41-486d-83e6-3ca2eefaf5ec"/>
+				<textFieldExpression><![CDATA[$F{analyse_cybersecurite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="40" width="70" height="30" uuid="4af7b33d-638d-4ab7-ac31-0fd0652490c8"/>
+				<textFieldExpression><![CDATA[$F{libelle_pov}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

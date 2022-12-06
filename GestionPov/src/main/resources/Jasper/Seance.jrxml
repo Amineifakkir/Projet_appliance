@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Seance" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ae923153-4051-49e3-8149-444ecc6b7615">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="idSeance" class="java.lang.Long"/>
+	<field name="dataseance" class="java.sql.Date"/>
+	<field name="resumer" class="java.lang.String"/>
+	<field name="participant" class="java.lang.String"/>
+	<field name="povSeance" class="java.lang.Long"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="d1ce2046-6c7b-4c88-93ea-ab87fefd34f6"/>
+				<staticText>
+					<reportElement x="170" y="25" width="234" height="43" forecolor="#FFFFFF" uuid="bfa5cbb6-dda0-4cc0-888e-a0a397df0260"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Seance]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="81">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="e935f82d-b0c2-4ece-a1ea-2be95a8bddd8"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="6fb03760-781a-419c-92ff-10a1853730fe"/>
+				<text><![CDATA[idSeance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="100" height="30" uuid="70638e04-f801-47fe-8ef8-12fabd19ff52"/>
+				<text><![CDATA[dateSeance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="0" width="100" height="30" uuid="77a4d348-3041-4252-a99a-0f5a0c09a835"/>
+				<text><![CDATA[Resumer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="0" width="100" height="30" uuid="fd656c61-1417-4bd7-9af9-4c3fe6e6af39"/>
+				<text><![CDATA[Participant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="0" width="100" height="30" uuid="0b524eb5-22cf-48fc-a9b2-b8cc29e40713"/>
+				<text><![CDATA[idPov]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="37" width="100" height="30" uuid="eb7b5a05-74b0-4467-852e-a64f20189282"/>
+				<textFieldExpression><![CDATA[$F{idSeance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="37" width="100" height="30" uuid="ebe172ac-d49d-4606-9caa-224288703140"/>
+				<textFieldExpression><![CDATA[$F{dataseance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="37" width="100" height="30" uuid="1c5f9fdd-7312-4fb8-8622-fabe3409f5b4"/>
+				<textFieldExpression><![CDATA[$F{resumer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="37" width="100" height="30" uuid="925dd84c-e753-4612-afcf-9d31f808e894"/>
+				<textFieldExpression><![CDATA[$F{participant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="37" width="100" height="30" uuid="a2fa3c47-70bf-4cbb-a2fb-a762f651b78d"/>
+				<textFieldExpression><![CDATA[$F{povSeance}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="e33c0c15-fdd8-4e2f-9fe2-d83826e8b6d7"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="5e27b48e-4835-473c-a185-fb9e3bbb9e0a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="36038bca-a9e3-481d-9102-3c12f4a118dd"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="8ed8b689-cad4-4038-83bc-21a7a28a6cb8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
