@@ -21,7 +21,7 @@ public class TypePrestation {
     public  String Libelle;
 
 
-    @OneToMany(mappedBy = "TypePres" )
+    @OneToMany(mappedBy = "TypePres" ,cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Suivi> suivis;
 
 

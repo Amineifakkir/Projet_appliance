@@ -36,9 +36,9 @@ public class POV {
     public String Analyse_CyberSecurite;
     public String Libelle_Pov;
 
-    @OneToMany(mappedBy = "povSuivi" )
+    @OneToMany(mappedBy = "povSuivi",cascade = CascadeType.REMOVE, orphanRemoval = true )
     public List<Suivi> suivis;
 
-    @OneToMany(mappedBy = "povSeance" )
+    @OneToMany(mappedBy = "povSeance",cascade = CascadeType.REMOVE, orphanRemoval = true )
     public List<Seance> seances;
 }

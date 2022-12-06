@@ -14,7 +14,7 @@ public interface ApplianceService {
 
 
     ApplianceDTO save(ApplianceDTO appliance);
-    void delete(Long appliance);
+    void delete(Long idAppliance);
 
     AppliancePageDto findAll(Pageable pageRequest);
     List<ApplianceDTO> findAll();

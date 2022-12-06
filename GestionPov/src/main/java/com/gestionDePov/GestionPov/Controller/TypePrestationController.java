@@ -47,9 +47,9 @@ public class TypePrestationController {
         return typePrestation.findAll();
 
     }
-    @DeleteMapping("/Delete/{type}")
-    public void deleteType(@PathVariable("type") Long type) {
-        typePrestation.delete(type);
+    @DeleteMapping("/Delete/{idTypePres}")
+    public void deleteType(@PathVariable("idTypePres") Long idTypePres) {
+        typePrestation.delete(idTypePres);
     }
 
     @PutMapping("/Update/{type}")

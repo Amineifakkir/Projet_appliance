@@ -19,7 +19,7 @@ public class Type {
     public  String libelle;
 
 
-    @OneToMany(mappedBy = "idType" ,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idType" ,fetch = FetchType.LAZY,cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Appliance> appliances;
 
 }

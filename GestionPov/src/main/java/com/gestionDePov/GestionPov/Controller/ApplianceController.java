@@ -52,9 +52,9 @@ public class ApplianceController {
 
     }
 
-    @DeleteMapping("/Delete/{type}") //Delete
-    public void deleteType(@PathVariable Long type) {
-        appliance.delete(type);
+    @DeleteMapping("/Delete/{idAppliance}") //Delete
+    public void deleteType(@PathVariable("idAppliance") Long idAppliance) {
+        appliance.delete(idAppliance);
     }
 
 

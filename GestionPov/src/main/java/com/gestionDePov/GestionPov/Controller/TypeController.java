@@ -6,8 +6,12 @@ import com.gestionDePov.GestionPov.DTO.TypePageDTO;
 import com.gestionDePov.GestionPov.Model.Type;
 import com.gestionDePov.GestionPov.Repository.TypeRepo;
 import com.gestionDePov.GestionPov.Service.TypeService;
+import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -47,8 +51,13 @@ public class TypeController {
 @Autowired
 private TypeRepo typeRepo;
 
+@Autowired
+private KeycloakRestTemplate keycloakRestTemplate;
+
     @GetMapping("/Find")
     public TypePageDTO registerNewStudent(@RequestParam int page, @RequestParam int size){
+//        keycloakRestTemplate.exchange("http://localhost:8081/Type/Find", HttpMethod.GET, null, new ParameterizedTypeReference<PagedModel<Type>>() {
+//        });
 
         return typeService.findAllType(PageRequest.of(page, size));
 
@@ -64,7 +73,7 @@ public List<TypeDTO> registerNewStudents(){
         return typeService.save(type);
     }
     @DeleteMapping("/Delete/{type}")
-    public void deleteType(@PathVariable("type") Long type) {
+    public void deleteType(@PathVariable Long type) {
         typeService.delete(type);
     }
 

@@ -32,13 +32,13 @@ public class ApplianceImpl implements ApplianceService {
     }
 
     @Override
-    public void delete(Long appliance) {
-        boolean exists =applianceRepo.existsById(appliance);
+    public void delete(Long idAppliance) {
+        boolean exists =applianceRepo.existsById(idAppliance);
         if (!exists){
             throw new IllegalStateException(
-                    "Type with id "+appliance+" does not exists");
+                    "Type with id "+idAppliance+" does not exists");
         }
-        applianceRepo.deleteById(appliance);
+        applianceRepo.deleteById(idAppliance);
 
     }
 
