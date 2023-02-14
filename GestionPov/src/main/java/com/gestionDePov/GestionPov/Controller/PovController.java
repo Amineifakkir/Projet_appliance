@@ -1,11 +1,11 @@
 package com.gestionDePov.GestionPov.Controller;
 
 
-import com.gestionDePov.GestionPov.DTO.POVDTO;
+import com.gestionDePov.GestionPov.DTO.*;
 
-import com.gestionDePov.GestionPov.DTO.PovPageDto;
-import com.gestionDePov.GestionPov.DTO.TypeDTO;
 import com.gestionDePov.GestionPov.Repository.PovRepo;
+import com.gestionDePov.GestionPov.Service.ApplianceService;
+import com.gestionDePov.GestionPov.Service.ClientService;
 import com.gestionDePov.GestionPov.Service.PovService;
 
 import com.gestionDePov.GestionPov.Service.SuiviService;
@@ -18,8 +18,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +33,11 @@ import java.util.Map;
 public class PovController {
     @Autowired
     private  PovService pov;
+
+    @Autowired
+    private ClientService client;
+    @Autowired
+    private ApplianceService appliance;
     @Autowired
     private PovRepo povRepo;
 
@@ -42,9 +50,23 @@ public class PovController {
         return pov.findAll(PageRequest.of(page, size));
     }
     @GetMapping("/Findtp")
-    public List<POVDTO> registerNewStudents(){
+    public List<POVDTO> findPOV(){
 
         return pov.findAll();
+
+    }
+
+    @GetMapping("/FindAppliance")
+    public List<ApplianceDTO> findAppliance() {
+
+        return appliance.findAll();
+
+    }
+
+    @GetMapping("/FindClient")
+    public List<ClientDTO> registerNewStudents(){
+
+        return client.findAll();
 
     }
     @DeleteMapping("/Delete/{idPov}")
@@ -60,32 +82,35 @@ public class PovController {
 
 
     @GetMapping("/pdf")
-    public ResponseEntity<byte[]> downloadInvoice() throws JRException, FileNotFoundException {
+    public void getEnRpt(HttpServletResponse response) throws JRException, IOException {
+
 
 
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(povRepo.findAll());
 
-        System.out.println(beanCollectionDataSource);
+
 
         Map<String, Object> parameters = new HashMap<>();
 
+        parameters.put("createdBy","Amine");
 
-        JasperReport compileReport = JasperCompileManager
-                .compileReport(new FileInputStream("src/main/resources/Jasper/Pov.jrxml"));
+        JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Jasper/Pov.jrxml"));
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, parameters,beanCollectionDataSource);
 
 
-        JasperExportManager.exportReportToPdfFile(jasperPrint,
-                "Pov.pdf");
+        response.setContentType("application/x-pdf");
+        response.setHeader("Content-Disposition", "inline; filename=Pov.pdf");
 
-        byte[] data = JasperExportManager.exportReportToPdf(jasperPrint);
+        final OutputStream outStream = response.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 
-        System.err.println(data);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=Pov.pdf");
 
-        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
+
+
+
+
     }
+
 }

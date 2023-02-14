@@ -8,11 +8,14 @@ import com.gestionDePov.GestionPov.Model.Seance;
 import com.gestionDePov.GestionPov.Model.Suivi;
 import com.gestionDePov.GestionPov.Repository.SuiviRepo;
 import com.gestionDePov.GestionPov.Service.SuiviService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -66,5 +69,10 @@ public class SuiviImpl implements SuiviService {
         }
 
         return suiviDTO;
+    }
+
+    @Override
+    public void getEnRpt(HttpServletResponse response) throws JRException, IOException {
+
     }
 }

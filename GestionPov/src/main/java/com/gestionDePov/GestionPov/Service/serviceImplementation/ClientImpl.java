@@ -10,12 +10,15 @@ import com.gestionDePov.GestionPov.Model.Appliance;
 import com.gestionDePov.GestionPov.Model.Client;
 import com.gestionDePov.GestionPov.Repository.ClientRepo;
 import com.gestionDePov.GestionPov.Service.ClientService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -70,6 +73,11 @@ public class ClientImpl implements ClientService{
         }
 
         return clientDTO;
+
+    }
+
+    @Override
+    public void getEnRpt(HttpServletResponse response) throws JRException, IOException {
 
     }
 }

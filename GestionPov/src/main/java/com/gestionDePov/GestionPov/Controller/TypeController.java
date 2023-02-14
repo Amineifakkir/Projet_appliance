@@ -3,15 +3,15 @@ package com.gestionDePov.GestionPov.Controller;
 
 import com.gestionDePov.GestionPov.DTO.TypeDTO;
 import com.gestionDePov.GestionPov.DTO.TypePageDTO;
-import com.gestionDePov.GestionPov.Model.Type;
+
 import com.gestionDePov.GestionPov.Repository.TypeRepo;
 import com.gestionDePov.GestionPov.Service.TypeService;
+
 import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
+
 import org.springframework.data.domain.PageRequest;
-import org.springframework.hateoas.PagedModel;
-import org.springframework.http.HttpMethod;
+
 import org.springframework.web.bind.annotation.*;
 
 
@@ -23,16 +23,11 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.Connection;
-import java.util.Arrays;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,8 +51,6 @@ private KeycloakRestTemplate keycloakRestTemplate;
 
     @GetMapping("/Find")
     public TypePageDTO registerNewStudent(@RequestParam int page, @RequestParam int size){
-//        keycloakRestTemplate.exchange("http://localhost:8081/Type/Find", HttpMethod.GET, null, new ParameterizedTypeReference<PagedModel<Type>>() {
-//        });
 
         return typeService.findAllType(PageRequest.of(page, size));
 
@@ -82,34 +75,39 @@ public List<TypeDTO> registerNewStudents(){
     public TypeDTO UpdateType(@PathVariable Long type, @RequestBody TypeDTO typeDTO){
         return typeService.Update(type,typeDTO);
     }
+
     @GetMapping("/pdf")
-    public ResponseEntity<byte[]>  downloadInvoice() throws JRException, FileNotFoundException {
+    public void getEnRpt(HttpServletResponse response) throws JRException, IOException{
+
 
 
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(typeRepo.findAll());
 
-        System.out.println(beanCollectionDataSource);
+
 
         Map<String, Object> parameters = new HashMap<>();
 
+        parameters.put("createdBy","Amine");
 
-        JasperReport compileReport = JasperCompileManager
-                .compileReport(new FileInputStream("src/main/resources/Jasper/Type.jrxml"));
+        JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Jasper/Type.jrxml"));
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, parameters,beanCollectionDataSource);
 
 
-        JasperExportManager.exportReportToPdfFile(jasperPrint,
-                "Type.pdf");
+        response.setContentType("application/x-pdf");
+        response.setHeader("Content-Disposition", "inline; filename=Type.pdf");
 
-        byte[] data = JasperExportManager.exportReportToPdf(jasperPrint);
+        final OutputStream outStream = response.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 
-        System.err.println(data);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=Type.pdf");
 
-        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
+
+
+
+
     }
+
+
 
 }

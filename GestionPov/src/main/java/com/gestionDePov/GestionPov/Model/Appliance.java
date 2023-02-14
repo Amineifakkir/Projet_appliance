@@ -19,7 +19,10 @@ public class Appliance {
     public  String Libelle;
     @ManyToOne
     @JoinColumn(name = "idType")
+    @Enumerated
     public Type idType; //FK_TYPE
+
+
     public String DBID;
     public boolean Disponibilitte;
     public String References;

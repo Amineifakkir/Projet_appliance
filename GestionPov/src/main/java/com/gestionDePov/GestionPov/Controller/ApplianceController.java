@@ -3,24 +3,22 @@ package com.gestionDePov.GestionPov.Controller;
 import com.gestionDePov.GestionPov.DTO.ApplianceDTO;
 
 import com.gestionDePov.GestionPov.DTO.AppliancePageDto;
-import com.gestionDePov.GestionPov.DTO.TypeDTO;
+
 import com.gestionDePov.GestionPov.Repository.ApplianceRepo;
 import com.gestionDePov.GestionPov.Service.ApplianceService;
 
-import com.gestionDePov.GestionPov.Service.SuiviService;
-import com.gestionDePov.GestionPov.Service.serviceImplementation.ApplianceImpl;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +32,8 @@ public class ApplianceController {
     @Autowired
     private ApplianceRepo applianceRepo;
 
+
+
     @PostMapping("/add") //add
     public ApplianceDTO getAppliances(@RequestBody ApplianceDTO appliances) {
         return appliance.save(appliances);
@@ -46,7 +46,7 @@ public class ApplianceController {
     }
 
     @GetMapping("/Findtp")
-    public List<ApplianceDTO> registerNewStudents() {
+    public List<ApplianceDTO> findAppliances() {
 
         return appliance.findAll();
 
@@ -63,34 +63,37 @@ public class ApplianceController {
         return appliance.Update(idApp, applianceDTO);
     }
 
+
     @GetMapping("/pdf")
-    public ResponseEntity<byte[]> downloadInvoice() throws JRException, FileNotFoundException {
+    public void getEnRpt(HttpServletResponse response) throws JRException, IOException{
+
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(appliance.findAll());
 
 
-        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(applianceRepo.findAll());
 
-        System.out.println(beanCollectionDataSource);
+
 
         Map<String, Object> parameters = new HashMap<>();
 
+        parameters.put("createdBy","Amine");
 
-        JasperReport compileReport = JasperCompileManager
-                .compileReport(new FileInputStream("src/main/resources/Jasper/Type.jrxml"));
+        JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Jasper/Appliance.jrxml"));
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, parameters,beanCollectionDataSource);
 
 
-        JasperExportManager.exportReportToPdfFile(jasperPrint,
-                "Type.pdf");
+        response.setContentType("application/x-pdf");
+        response.setHeader("Content-Disposition", "inline; filename=Appliance.pdf");
 
-        byte[] data = JasperExportManager.exportReportToPdf(jasperPrint);
+        final OutputStream outStream = response.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 
-        System.err.println(data);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=Type.pdf");
 
-        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
+
+
+
+
     }
 
 

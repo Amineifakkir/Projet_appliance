@@ -12,10 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Table
+
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idType;
+
+
     public  String libelle;
 
 

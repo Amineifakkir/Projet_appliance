@@ -4,9 +4,11 @@ package com.gestionDePov.GestionPov.Controller;
 import com.gestionDePov.GestionPov.DTO.SuiviDTO;
 
 import com.gestionDePov.GestionPov.DTO.SuiviPageDTO;
+import com.gestionDePov.GestionPov.DTO.TypePrestationDTO;
 import com.gestionDePov.GestionPov.Repository.SuiviRepo;
 import com.gestionDePov.GestionPov.Service.SuiviService;
 
+import com.gestionDePov.GestionPov.Service.TypePrestationService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +33,8 @@ import java.util.Map;
 public class SuiviController {
 @Autowired
     private  SuiviService suivi;
-
+    @Autowired
+    private TypePrestationService typePrestation;
 @Autowired
 private SuiviRepo suiviRepo;
     @PostMapping("/add")
@@ -51,39 +57,52 @@ private SuiviRepo suiviRepo;
         return suivi.findAll();
 
     }
+
+
     @PutMapping("/Update/{idSuivi}")
     public SuiviDTO updateSuivi(@PathVariable("idSuivi") Long idSuivi, @RequestBody SuiviDTO suiviDTO){
         return suivi.Update(idSuivi,suiviDTO);
     }
 
+    @GetMapping("/Findtype")
+    public List<TypePrestationDTO> findTypePrestation(){
+
+        return typePrestation.findAll();
+
+    }
+
     @GetMapping("/pdf")
-    public ResponseEntity<byte[]> downloadInvoice() throws JRException, FileNotFoundException {
+    public void getEnRpt(HttpServletResponse response) throws JRException, IOException {
+
 
 
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(suiviRepo.findAll());
 
-        System.out.println(beanCollectionDataSource);
+
 
         Map<String, Object> parameters = new HashMap<>();
 
+        parameters.put("createdBy","Amine");
 
-        JasperReport compileReport = JasperCompileManager
-                .compileReport(new FileInputStream("src/main/resources/Jasper/Suivi.jrxml"));
+        JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Jasper/Suivi.jrxml"));
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, parameters,beanCollectionDataSource);
 
 
-        JasperExportManager.exportReportToPdfFile(jasperPrint,
-                "Suivi.pdf");
+        response.setContentType("application/x-pdf");
+        response.setHeader("Content-Disposition", "inline; filename=Suivi.pdf");
 
-        byte[] data = JasperExportManager.exportReportToPdf(jasperPrint);
+        final OutputStream outStream = response.getOutputStream();
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 
-        System.err.println(data);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=Suivi.pdf");
 
-        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
+
+
+
+
     }
+
+
 
 }

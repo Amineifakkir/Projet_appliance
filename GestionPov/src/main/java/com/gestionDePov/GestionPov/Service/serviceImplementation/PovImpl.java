@@ -10,11 +10,14 @@ import com.gestionDePov.GestionPov.Model.Contact;
 import com.gestionDePov.GestionPov.Model.POV;
 import com.gestionDePov.GestionPov.Repository.PovRepo;
 import com.gestionDePov.GestionPov.Service.PovService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -69,8 +72,10 @@ PovMapper povMapper;
         return povDTO;
     }
 
+    @Override
+    public void getEnRpt(HttpServletResponse response) throws JRException, IOException {
 
-
+    }
 
 
 }

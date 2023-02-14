@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Appliance" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c7745b90-5d51-4ddc-a9d0-c2954cc3c9cf">
+	<parameter name="Type" class="java.lang.Integer" evaluationTime="Early">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[]]>
+		<![CDATA[1]]>
 	</queryString>
 	<field name="idAppliance" class="java.lang.Long"/>
-	<field name="Libelle" class="java.lang.String"/>
-	<field name="idType" class="java.util.List"/>
-	<field name="dbid" class="java.lang.String"/>
+	<field name="libelle" class="java.lang.String"/>
+	<field name="DBID" class="java.lang.String"/>
 	<field name="disponibilitte" class="java.lang.Boolean"/>
-	<field name="refrences" class="java.lang.String"/>
+	<field name="references" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>
@@ -31,49 +33,45 @@
 		<band height="13"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="90">
+		<band height="160">
 			<line>
 				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="571c6b30-4c00-4217-ab2a-6f1137cd3a03"/>
 			</line>
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="30" uuid="b395c052-4ce3-4378-87f3-a63061b67819"/>
-				<text><![CDATA[Texte Statique]]></text>
+				<text><![CDATA[idAppliance]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="80" y="0" width="100" height="30" uuid="65b0a33c-c832-4b2a-a494-38375e73b4d3"/>
-				<text><![CDATA[Texte Statique]]></text>
+				<text><![CDATA[Libelle]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="170" y="0" width="100" height="30" uuid="55602434-ec77-4b4d-b850-24c38bf9cca3"/>
-				<text><![CDATA[Texte Statique]]></text>
+				<text><![CDATA[IdType]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="250" y="0" width="100" height="30" uuid="1867004a-3eb2-46f7-8859-c1a8c95af080"/>
-				<text><![CDATA[Texte Statique]]></text>
+				<text><![CDATA[DBID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="330" y="0" width="100" height="30" uuid="04ec6d88-86a5-4d8e-b63e-2b7543217414"/>
-				<text><![CDATA[Texte Statique]]></text>
+				<text><![CDATA[Disponibilite]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="400" y="0" width="100" height="30" uuid="680654f2-b239-4872-a325-45708efc5244"/>
-				<text><![CDATA[Texte Statique]]></text>
+				<text><![CDATA[References]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="48" width="100" height="30" uuid="3320f86d-ecdd-4d22-b29f-e7910b204cd4"/>
+				<reportElement x="0" y="50" width="100" height="30" uuid="3320f86d-ecdd-4d22-b29f-e7910b204cd4"/>
 				<textFieldExpression><![CDATA[$F{idAppliance}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="80" y="50" width="100" height="30" uuid="910bb2ce-8da3-4cdb-a990-f105f3f4eab8"/>
-				<textFieldExpression><![CDATA[$F{Libelle}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="170" y="50" width="100" height="30" uuid="cdd85b31-5281-45f8-abb9-a7c7b51d5c5f"/>
-				<textFieldExpression><![CDATA[$F{idType}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="250" y="50" width="100" height="30" uuid="7e35e524-6b6d-4520-8d77-7af9bcb97f27"/>
-				<textFieldExpression><![CDATA[$F{dbid}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{DBID}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="330" y="50" width="100" height="30" uuid="50224459-3be5-4d78-8a12-df37c10dea3c"/>
@@ -81,7 +79,11 @@
 			</textField>
 			<textField>
 				<reportElement x="400" y="50" width="100" height="30" uuid="46e3a41b-c3eb-4891-b0e0-6d8cb7ac984b"/>
-				<textFieldExpression><![CDATA[$F{refrences}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{references}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="50" width="100" height="30" uuid="cbf47b28-13e0-4195-8e8f-20009aa2df3e"/>
+				<textFieldExpression><![CDATA[$P{Type}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>

@@ -2,6 +2,7 @@ package com.gestionDePov.GestionPov.Configuration;
 
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,7 +14,10 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @KeycloakConfiguration
 @ConditionalOnProperty(name = "keycloak.enabled", havingValue = "true", matchIfMissing = true)
 public class KeycloakSpringSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
-
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(keycloakAuthenticationProvider());
+    }
     @Override
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
         return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
@@ -23,8 +27,8 @@ public class KeycloakSpringSecurityConfig extends KeycloakWebSecurityConfigurerA
         auth.authenticationProvider(keycloakAuthenticationProvider());
 
     }
-@Override
-    protected void configure(HttpSecurity http) throws Exception{
+    @Override
+        protected void configure(HttpSecurity http) throws Exception{
         super.configure(http);
         http.authorizeRequests().antMatchers("/Type/**").hasAuthority("Admin");
     http.authorizeRequests().antMatchers("/Appliance/**").hasAuthority("Admin");
@@ -34,9 +38,12 @@ public class KeycloakSpringSecurityConfig extends KeycloakWebSecurityConfigurerA
     http.authorizeRequests().antMatchers("/Pov/**").hasAuthority("Manager");
     http.authorizeRequests().antMatchers("/Suivi/**").hasAuthority("Manager");
     http.authorizeRequests().antMatchers("/Seance/**").hasAuthority("Manager");
+    http.authorizeRequests().antMatchers("/Appliance/Findtp/**").hasAuthority("Manager");
+//    http.authorizeRequests().antMatchers("/Appliance/Findtp/**").hasAuthority("Admin");
     http.csrf().disable().authorizeRequests()
             .anyRequest()
-            .authenticated();
+            .permitAll();
+        http.cors().and().csrf().disable();
 
 
 }
